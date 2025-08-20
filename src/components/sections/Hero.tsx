@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 import Button from '@/components/ui/Button';
 import { ArrowRight, Code, TrendingUp } from 'lucide-react';
+import { scrollToSection } from '@/lib/utils';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -252,11 +253,19 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="group">
+            <Button 
+              size="lg" 
+              className="group"
+              onClick={() => scrollToSection('contact')}
+            >
               Start Your Project
               <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
             </Button>
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => scrollToSection('portfolio')}
+            >
               View Our Work
             </Button>
           </div>

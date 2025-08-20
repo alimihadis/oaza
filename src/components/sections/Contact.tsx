@@ -224,7 +224,7 @@ export default function Contact() {
   ];
 
   return (
-    <section ref={containerRef} className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <section id="contact" ref={containerRef} className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
       {/* 3D Background Canvas */}
       <div className="absolute inset-0 opacity-30">
         <canvas
