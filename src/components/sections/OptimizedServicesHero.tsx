@@ -112,16 +112,16 @@ export default function OptimizedServicesHero() {
           transition={{ duration: config.animationDuration }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-exo2-800 text-gray-900 mb-6 tracking-wide">
             Our
-            <span className="block gradient-text">
+            <span className="block gradient-text-hero">
               {typedText}
               <span className="animate-pulse">|</span>
             </span>
             Solutions
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl font-exo2-400 text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed tracking-wide">
             Comprehensive software development and digital marketing services. 
             We transform ideas into powerful digital experiences that help businesses succeed.
           </p>

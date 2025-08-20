@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* EXO 2 Font Configuration */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   html {
@@ -10,13 +11,75 @@
   }
   
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  
+  /* EXO 2 Font Weights */
+  .font-exo2 {
+    font-family: 'Exo 2', system-ui, sans-serif;
+  }
+  
+  .font-exo2-400 {
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  
+  .font-exo2-500 {
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  
+  .font-exo2-600 {
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  
+  .font-exo2-700 {
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  
+  .font-exo2-800 {
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.05em;
   }
 }
 
 @layer components {
   .gradient-text {
     @apply bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  
+  .gradient-text-hero {
+    @apply bg-gradient-to-r from-primary-600 via-blue-600 to-purple-600 bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+  }
+  
+  .gradient-text-bold {
+    @apply bg-gradient-to-r from-primary-700 to-blue-700 bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  
+  .gradient-text-medium {
+    @apply bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
   }
   
   .glass-effect {

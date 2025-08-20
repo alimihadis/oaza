@@ -1,0 +1,185 @@
+[1mdiff --git a/PERFORMANCE_OPTIMIZATION_GUIDE.md b/PERFORMANCE_OPTIMIZATION_GUIDE.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d5907ac[m
+[1m--- /dev/null[m
+[1m+++ b/PERFORMANCE_OPTIMIZATION_GUIDE.md[m
+[36m@@ -0,0 +1,304 @@[m
+[32m+[m[32m# 🚀 **OAZA SOFTWARE PERFORMANCE OPTIMIZATION GUIDE**[m
+[32m+[m
+[32m+[m[32m## **📋 OVERVIEW**[m
+[32m+[m
+[32m+[m[32mThis guide provides a comprehensive plan to optimize your Oaza Software website's performance while maintaining the beautiful animations and premium feel. The optimization system automatically detects device capabilities and adjusts animation complexity accordingly.[m
+[32m+[m
+[32m+[m[32m## **🎯 OPTIMIZATION GOALS**[m
+[32m+[m
+[32m+[m[32m- ✅ **Maintain visual impact** and "wow factor"[m
+[32m+[m[32m- ✅ **Improve loading speed** by 40-60%[m
+[32m+[m[32m- ✅ **Keep animations smooth** on all devices[m
+[32m+[m[32m- ✅ **Smart performance management** based on device capabilities[m
+[32m+[m[32m- ✅ **Progressive enhancement** approach[m
+[32m+[m
+[32m+[m[32m## **🔧 IMPLEMENTATION STEPS**[m
+[32m+[m
+[32m+[m[32m### **Step 1: Install New Performance Hooks**[m
+[32m+[m
+[32m+[m[32mThe new performance detection system automatically:[m
+[32m+[m[32m- Detects device capabilities (CPU, memory, GPU)[m
+[32m+[m[32m- Monitors FPS and performance in real-time[m
+[32m+[m[32m- Adjusts animation complexity automatically[m
+[32m+[m[32m- Provides fallbacks for low-performance devices[m
+[32m+[m
+[32m+[m[32m### **Step 2: Replace Components Gradually**[m
+[32m+[m
+[32m+[m[32m#### **A. Replace Preloader**[m
+[32m+[m[32m```tsx[m
+[32m+[m[32m// OLD: src/components/common/Preloader.tsx[m
+[32m+[m[32m// NEW: src/components/common/OptimizedPreloader.tsx[m
+[32m+[m
+[32m+[m[32m// In your layout or main component:[m
+[32m+[m[32mimport OptimizedPreloader from '@/components/common/OptimizedPreloader';[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m#### **B. Replace Navigation**[m
+[32m+[m[32m```tsx[m
+[32m+[m[32m// OLD: src/components/layout/Navigation.tsx[m
+[32m+[m[32m// NEW: src/components/layout/OptimizedNavigation.tsx[m
+[32m+[m
+[32m+[m[32m// In your layout:[m
+[32m+[m[32mimport OptimizedNavigation from '@/components/layout/OptimizedNavigation';[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m#### **C. Replace ServicesHero**[m
+[32m+[m[32m```tsx[m
+[32m+[m[32m// OLD: src/components/sections/ServicesHero.tsx[m
+[32m+[m[32m// NEW: src/components/sections/OptimizedServicesHero.tsx[m
+[32m+[m
+[32m+[m[32m// In your services page:[m
+[32m+[m[32mimport OptimizedServicesHero from '@/components/sections/OptimizedServicesHero';[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m### **Step 3: Add Performance Monitor (Development Only)**[m
+[32m+[m
+[32m+[m[32m```tsx[m
+[32m+[m[32m// Add to your main layout for development monitoring[m
+[32m+[m[32mimport PerformanceMonitor from '@/components/common/PerformanceMonitor';[m
+[32m+[m
+[32m+[m[32m// In your layout component:[m
+[32m+[m[32m{process.env.NODE_ENV === 'development' && <PerformanceMonitor />}[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m## **📊 PERFORMANCE IMPROVEMENTS**[m
+[32m+[m
+[32m+[m[32m### **High-Performance Devices (Desktop, High-end)**[m
+[32m+[m[32m- **3D Effects**: Full Three.js scenes with 800 particles[m
+[32m+[m[32m- **Animations**: Complex parallax, backdrop filters, 3D transformations[m
+[32m+[m[32m- **Target FPS**: 60fps[m
+[32m+[m[32m- **Memory Usage**: Optimized with instancing and LOD[m
+[32m+[m
+[32m+[m[32m### **Medium-Performance Devices (Laptop, Mid-range)**[m
+[32m+[m[32m- **3D Effects**: Reduced Three.js scenes with 400 particles[m
+[32m+[m[32m- **Animations**: Simplified parallax, no backdrop filters[m
+[32m+[m[32m- **Target FPS**: 45fps[m
+[32m+[m[32m- **Memory Usage**: Moderate optimization[m
+[32m+[m
+[32m+[m[32m### **Low-Performance Devices (Mobile, Low-end)**[m
+[32m+[m[32m- **3D Effects**: CSS-only alternatives or minimal 3D[m
+[32m+[m[32m- **Animations**: Basic animations, no complex effects[m
+[32m+[m[32m- **Target FPS**: 30fps[m
+[32m+[m[32m- **Memory Usage**: Minimal, CSS-based alternatives[m
+[32m+[m
+[32m+[m[32m## **🎨 ANIMATION OPTIMIZATION STRATEGIES**[m
+[32m+[m
+[32m+[m[32m### **1. GPU Acceleration**[m
+[32m+[m[32m```css[m
+[32m+[m[32m/* Use these properties for smooth animations */[m
+[32m+[m[32m.element {[m
+[32m+[m[32m  will-change: transform, opacity;[m
+[32m+[m[32m  transform: translateZ(0); /* Force GPU layer */[m
+[32m+[m[32m  backface-visibility: hidden;[m
+[32m+[m[32m}[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m### **2. CSS vs JavaScript Animations**[m
+[32m+[m[32m- **CSS**: Use for simple transforms, opacity, basic movements[m
+[32m+[m[32m- **JavaScript**: Use for complex interactions, 3D effects, particles[m
+[32m+[m[32m- **Hybrid**: Combine both for optimal performance[m
+[32m+[m
+[32m+[m[32m### **3. Intersection Observer**[m
+[32m+[m[32m```tsx[m
+[32m+[m[32m// Only animate elements when visible[m
+[32m+[m[32mconst observer = new IntersectionObserver((entries) => {[m
+[32m+[m[32m  entries.forEach(entry => {[m
+[32m+[m[32m    if (entry.isIntersecting) {[m
+[32m+[m[32m      // Start animation[m
+[32m+[m[32m    } else {[m
+[32m+[m[32m      // Pause animation[m
+[32m+[m[32m    }[m
+[32m+[m[32m  });[m
+[32m+[m[32m});[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m### **4. Frame Rate Management**[m
+[32m+[m[32m```tsx[m
+[32m+[m[32m// Limit animations to device capabilities[m
+[32m+[m[32mconst targetFPS = isHighPerformance ? 60 : 30;[m
+[32m+[m[32mconst frameInterval = 1000 / targetFPS;[m
+[32m+[m
+[32m+[m[32mif (currentTime - lastFrameTime >= frameInterval) {[m
+[32m+[m[32m  // Render frame[m
+[32m+[m[32m  lastFrameTime = currentTime;[m
+[32m+[m[32m}[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m## **🔍 PERFORMANCE MONITORING**[m
+[32m+[m
+[32m+[m[32m### **Development Mode Features**[m
+[32m+[m[32m- Real-time FPS monitoring[m
+[32m+[m[32m- Memory usage tracking[m
+[32m+[m[32m- Performance warnings[m
+[32m+[m[32m- Device capability detection[m
+[32m+[m[32m- Animation frame time measurement[m
+[32m+[m
+[32m+[m[32m### **Production Mode**[m
+[32m+[m[32m- Automatic performance detection[m
+[32m+[m[32m- Silent optimization[m
+[32m+[m[32m- No monitoring overhead[m
+[32m+[m[32m- Automatic fallbacks[m
+[32m+[m
+[32m+[m[32m## **📱 MOBILE OPTIMIZATION**[m
+[32m+[m
+[32m+[m[32m### **Touch Device Considerations**[m
+[32m+[m[32m- Disable hover effects[m
+[32m+[m[32m- Reduce animation complexity[m
+[32m+[m[32m- Use CSS transforms instead of JavaScript[m
+[32m+[m[32m- Implement touch-friendly interactions[m
+[32m+[m
+[32m+[m[32m### **Battery Optimization**[m
+[32m+[m[32m- Detect low battery[m
+[32m+[m[32m- Reduce animation intensity[m
+[32m+[m[32m- Disable heavy effects[m
+[32m+[m[32m- Use CSS animations when possible[m
+[32m+[m
+[32m+[m[32m## **🌐 BROWSER COMPATIBILITY**[m
+[32m+[m
+[32m+[m[32m### **Feature Detection**[m
+[32m+[m[32m- WebGL support detection[m
+[32m+[m[32m- Backdrop filter support[m
+[32m+[m[32m- CSS feature support[m
+[32m+[m[32m- Performance API availability[m
+[32m+[m
+[32m+[m[32m### **Fallback Strategies**[m
+[32m+[m[32m- 3D → CSS animations[m
+[32m+[m[32m- Particles → Static elements[m
+[32m+[m[32m- Backdrop filters → Solid colors[m
+[32m+[m[32m- Complex effects → Simple alternatives[m
+[32m+[m
+[32m+[m[32m## **⚡ QUICK PERFORMANCE WINS**[m
+[32m+[m
+[32m+[m[32m### **Immediate Improvements**[m
+[32m+[m[32m1. **Replace backdrop-filter with solid colors** on mobile[m
+[32m+[m[32m2. **Reduce particle count** based on device performance[m
+[32m+[m[32m3. **Disable 3D effects** on low-end devices[m
+[32m+[m[32m4. **Throttle scroll events** based on performance[m
+[32m+[m[32m5. **Use CSS animations** instead of JavaScript when possible[m
+[32m+[m
+[32m+[m[3

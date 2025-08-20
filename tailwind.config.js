@@ -34,7 +34,13 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Exo 2', 'system-ui', 'sans-serif'],
+        exo2: ['Exo 2', 'system-ui', 'sans-serif'],
+        'exo2-400': ['Exo 2', 'system-ui', 'sans-serif'],
+        'exo2-500': ['Exo 2', 'system-ui', 'sans-serif'],
+        'exo2-600': ['Exo 2', 'system-ui', 'sans-serif'],
+        'exo2-700': ['Exo 2', 'system-ui', 'sans-serif'],
+        'exo2-800': ['Exo 2', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
