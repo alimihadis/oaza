@@ -4,7 +4,6 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import Card from '@/components/ui/Card';
-import Button from '@/components/ui/Button';
 import { ExternalLink, Github, Filter, Code, Smartphone, BarChart3, Eye } from 'lucide-react';
 import { PortfolioItem } from '@/lib/types';
 
@@ -367,16 +366,7 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
               </div>
             </div>
 
-            <div className="flex space-x-3">
-              <Button variant="outline" size="sm" className="flex-1 group-hover:border-primary-500 group-hover:text-primary-700 transition-colors duration-300">
-                View Details
-              </Button>
-              {item.link && (
-                <Button size="sm" className="flex-1 group-hover:bg-primary-600 transition-colors duration-300">
-                  Live Demo
-                </Button>
-              )}
-            </div>
+            {/* Buttons removed - cleaner interface */}
           </div>
 
           {/* Depth shadow effect */}

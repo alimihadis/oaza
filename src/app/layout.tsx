@@ -3,15 +3,13 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import PreloaderWrapper from '@/components/layout/PreloaderWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Oaza Software - Coding & Marketing Services',
-  description: 'Professional software development and digital marketing services. We build modern web applications and help businesses grow online.',
-  keywords: 'software development, web development, digital marketing, coding services',
-  authors: [{ name: 'Oaza Software' }],
-  viewport: 'width=device-width, initial-scale=1',
+  title: 'Oaza Software - Professional Software Development & Digital Marketing',
+  description: 'Professional software development and digital marketing services. We transform ideas into powerful digital experiences that help businesses succeed.',
 };
 
 export default function RootLayout({
@@ -20,15 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+    <html lang="en">
+      <body className={inter.className}>
+        <PreloaderWrapper />
+        <Header />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

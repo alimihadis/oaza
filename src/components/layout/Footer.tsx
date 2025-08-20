@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import Logo from '@/components/common/Logo';
 import Link from 'next/link';
 import { 
@@ -22,15 +22,12 @@ import {
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end end"]
-  });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,59 +57,35 @@ export default function Footer() {
     { icon: MapPin, text: "New York, NY", delay: 0.3 }
   ];
 
+  // Don't render until client-side to prevent hydration issues
+  if (!isClient) {
+    return <div className="h-96 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>;
+  }
+
   return (
-    <footer ref={containerRef} className="relative overflow-hidden">
+    <footer ref={containerRef} className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 z-10 mt-20">
       {/* Animated Background */}
-      <motion.div 
-        style={{ y, opacity }}
-        className="absolute inset-0"
-      >
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-        
+      <div className="absolute inset-0">
         {/* Animated Mesh Gradient Overlay */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 animate-pulse"></div>
-          <div className="absolute top-0 left-0 w-full h-full">
-            <svg className="w-full h-full" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0,700 C300,600 600,800 900,700 C1050,650 1200,750 1200,700 L1200,800 L0,800 Z" fill="url(#footerWave)" opacity="0.4">
-                <animate attributeName="d" dur="25s" repeatCount="indefinite" values="M0,700 C300,600 600,800 900,700 C1050,650 1200,750 1200,700 L1200,800 L0,800 Z;M0,700 C300,800 600,600 900,700 C1050,750 1200,650 1200,700 L1200,800 L0,800 Z;M0,700 C300,600 600,800 900,700 C1050,650 1200,750 1200,700 L1200,800 L0,800 Z"/>
-              </path>
-              <defs>
-                <linearGradient id="footerWave" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
-                  <stop offset="50%" style={{ stopColor: '#8b5cf6', stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: '#ec4899', stopOpacity: 1 }} />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
         </div>
 
-        {/* Floating Particles */}
+        {/* Floating Particles - Simplified to prevent hydration issues */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
+          {[...Array(10)].map((_, i) => (
+            <div
               key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-60"
+              className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-60 animate-pulse"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.6, 1, 0.6],
-                scale: [1, 1.5, 1],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
+                left: `${20 + (i * 8)}%`,
+                top: `${30 + (i * 5)}%`,
+                animationDelay: `${i * 0.5}s`,
               }}
             />
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
