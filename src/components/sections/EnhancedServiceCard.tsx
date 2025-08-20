@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import Card from '@/components/ui/Card';
-import { Check, ExternalLink } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface EnhancedServiceCardProps {
   service: {
@@ -360,15 +360,7 @@ export default function EnhancedServiceCard({ service, index }: EnhancedServiceC
               </div>
             </div>
 
-            {/* Action Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full px-4 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-medium rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center group"
-            >
-              Learn More
-              <ExternalLink size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-            </motion.button>
+
           </div>
 
           {/* Depth shadow effect */}
