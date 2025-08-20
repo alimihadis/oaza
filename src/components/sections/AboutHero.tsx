@@ -1,0 +1,355 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import * as THREE from 'three';
+import { ArrowRight, Users, Target, Award, Clock, Globe, Zap } from 'lucide-react';
+
+const valueIcons = [Users, Target, Award, Clock, Globe, Zap];
+
+export default function AboutHero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<THREE.Points | null>(null);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const animationRef = useRef<number>();
+  const mouseRef = useRef({ x: 0, y: 0 });
+  
+  const [typedText, setTypedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const fullText = "Oaza Software";
+
+  // Typing animation effect
+  useEffect(() => {
+    if (isTyping && currentIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setTypedText(fullText.slice(0, currentIndex + 1));
+        setCurrentIndex(currentIndex + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    } else if (currentIndex >= fullText.length) {
+      setIsTyping(false);
+      setTimeout(() => {
+        setTypedText('');
+        setCurrentIndex(0);
+        setIsTyping(true);
+      }, 2000);
+    }
+  }, [currentIndex, isTyping, fullText]);
+
+  // 3D Scene Setup
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    sceneRef.current = scene;
+
+    // Camera setup
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 5;
+
+    // Renderer setup
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      alpha: true,
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    rendererRef.current = renderer;
+
+    // Create floating value icons
+    const createFloatingIcons = () => {
+      const icons: THREE.Mesh[] = [];
+      
+      valueIcons.forEach((IconComponent, index) => {
+        // Create icon geometry based on type
+        let geometry: THREE.BufferGeometry;
+        let material: THREE.Material;
+        
+        switch (index) {
+          case 0: // Users - Group of people
+            geometry = new THREE.SphereGeometry(0.3, 16, 16);
+            material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color(0x3b82f6),
+              transparent: true,
+              opacity: 0.7,
+              wireframe: true,
+            });
+            break;
+          case 1: // Target - Target
+            geometry = new THREE.TorusGeometry(0.3, 0.1, 8, 16);
+            material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color(0x8b5cf6),
+              transparent: true,
+              opacity: 0.7,
+              wireframe: true,
+            });
+            break;
+          case 2: // Award - Trophy
+            geometry = new THREE.ConeGeometry(0.2, 0.6, 8);
+            material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color(0xfbbf24),
+              transparent: true,
+              opacity: 0.7,
+              wireframe: true,
+            });
+            break;
+          case 3: // Clock - Clock
+            geometry = new THREE.CylinderGeometry(0.3, 0.3, 0.1, 16);
+            material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color(0x10b981),
+              transparent: true,
+              opacity: 0.7,
+              wireframe: true,
+            });
+            break;
+          case 4: // Globe - Globe
+            geometry = new THREE.SphereGeometry(0.4, 16, 16);
+            material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color(0x06b6d4),
+              transparent: true,
+              opacity: 0.7,
+              wireframe: true,
+            });
+            break;
+          case 5: // Zap - Lightning
+            geometry = new THREE.ConeGeometry(0.3, 0.8, 8);
+            material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color(0xfbbf24),
+              transparent: true,
+              opacity: 0.7,
+              wireframe: true,
+            });
+            break;
+          default:
+            geometry = new THREE.SphereGeometry(0.3, 16, 16);
+            material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color(0xef4444),
+              transparent: true,
+              opacity: 0.7,
+              wireframe: true,
+            });
+        }
+        
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(
+          (Math.random() - 0.5) * 15,
+          (Math.random() - 0.5) * 15,
+          (Math.random() - 0.5) * 8
+        );
+        mesh.rotation.set(
+          Math.random() * Math.PI,
+          Math.random() * Math.PI,
+          Math.random() * Math.PI
+        );
+        
+        icons.push(mesh);
+        scene.add(mesh);
+      });
+      
+      return icons;
+    };
+
+    // Create particle system
+    const createParticleSystem = () => {
+      const particleCount = 600;
+      const positions = new Float32Array(particleCount * 3);
+      const colors = new Float32Array(particleCount * 3);
+
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 20;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+        colors[i * 3] = Math.random() * 0.5 + 0.5;
+        colors[i * 3 + 1] = Math.random() * 0.5 + 0.5;
+        colors[i * 3 + 2] = Math.random() * 0.5 + 0.5;
+      }
+
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const material = new THREE.PointsMaterial({
+        size: 0.04,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.6,
+      });
+
+      const particles = new THREE.Points(geometry, material);
+      particlesRef.current = particles;
+      scene.add(particles);
+    };
+
+    const icons = createFloatingIcons();
+    createParticleSystem();
+
+    // Animation loop
+    const animate = () => {
+      animationRef.current = requestAnimationFrame(animate);
+
+      // Rotate and animate icons
+      icons.forEach((icon, index) => {
+        icon.rotation.x += 0.01 * (index % 3 + 1);
+        icon.rotation.y += 0.01 * (index % 2 + 1);
+        icon.rotation.z += 0.01 * (index % 4 + 1);
+        
+        // Floating motion
+        icon.position.y += Math.sin(Date.now() * 0.001 + index) * 0.001;
+        icon.position.x += Math.cos(Date.now() * 0.001 + index) * 0.001;
+      });
+
+      // Particle interaction with mouse
+      if (particlesRef.current) {
+        const positions = particlesRef.current.geometry.attributes.position.array as Float32Array;
+        for (let i = 0; i < positions.length; i += 3) {
+          const dx = positions[i] - mouseRef.current.x * 10;
+          const dy = positions[i + 1] - mouseRef.current.y * 10;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 2) {
+            const force = (2 - distance) * 0.1;
+            positions[i] += dx * force;
+            positions[i + 1] += dy * force;
+          }
+        }
+        particlesRef.current.geometry.attributes.position.needsUpdate = true;
+      }
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // Handle mouse movement
+    const handleMouseMove = (event: MouseEvent) => {
+      mouseRef.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouseRef.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    };
+
+    // Handle window resize
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      renderer.dispose();
+    };
+  }, []);
+
+  return (
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 3D Canvas Background */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ zIndex: 1 }}
+      />
+
+      {/* Parallax Background Layers */}
+      <motion.div 
+        style={{ y, opacity, zIndex: 2 }}
+        className="absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-bounce-gentle" style={{ animationDelay: '2s' }}></div>
+      </motion.div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style={{ zIndex: 3 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto"
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+            About
+            <span className="block gradient-text">
+              {typedText}
+              <span className="animate-pulse">|</span>
+            </span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            We're a team of passionate technologists, designers, and strategists 
+            dedicated to transforming businesses through innovative digital solutions.
+          </p>
+
+
+
+          {/* Value Icons Preview */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid grid-cols-2 md:grid-cols-6 gap-6 max-w-4xl mx-auto"
+          >
+            {valueIcons.map((IconComponent, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="flex flex-col items-center space-y-2"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center shadow-lg">
+                  <IconComponent size={32} className="text-purple-600" />
+                </div>
+                <span className="text-sm text-gray-600 font-medium">Value {index + 1}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        style={{ zIndex: 3 }}
+      >
+        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+          />
+        </div>
+      </motion.div>
+    </section>
+  );
+}

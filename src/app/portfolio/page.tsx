@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { ExternalLink, Github, Filter, Code, Smartphone, BarChart3 } from 'lucide-react';
 import { PortfolioItem } from '@/lib/types';
+import PortfolioHero from '@/components/sections/PortfolioHero';
 
 export const metadata: Metadata = {
   title: 'Our Portfolio - Oaza Software',
@@ -95,20 +96,8 @@ const categories = [
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Our <span className="gradient-text">Portfolio</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-              Discover our successful projects and see how we've helped businesses 
-              transform their digital presence and achieve remarkable results.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+      {/* Enhanced Hero Section */}
+      <PortfolioHero />
 
       {/* Portfolio Grid */}
       <section className="py-20">

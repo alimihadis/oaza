@@ -3,6 +3,8 @@ import AnimatedSection from '@/components/common/AnimatedSection';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { Check, Code, Smartphone, BarChart3, Palette, Globe, Zap, Star } from 'lucide-react';
+import ServicesHero from '@/components/sections/ServicesHero';
+import EnhancedServiceCard from '@/components/sections/EnhancedServiceCard';
 
 export const metadata: Metadata = {
   title: 'Our Services - Oaza Software',
@@ -14,7 +16,7 @@ const services = [
     id: 'web-development',
     title: 'Web Development',
     description: 'Modern, responsive web applications built with cutting-edge technologies.',
-    icon: Code,
+    icon: '💻',
     features: [
       'Custom Web Applications',
       'E-commerce Platforms',
@@ -25,13 +27,14 @@ const services = [
       'Cross-browser Compatibility',
       'Responsive Design'
     ],
-    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'MongoDB']
+    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'MongoDB'],
+    modelType: 'laptop'
   },
   {
     id: 'mobile-development',
     title: 'Mobile Development',
     description: 'Native and cross-platform mobile applications for iOS and Android.',
-    icon: Smartphone,
+    icon: '📱',
     features: [
       'Native iOS Development',
       'Native Android Development',
@@ -42,13 +45,14 @@ const services = [
       'Performance Optimization',
       'Security Implementation'
     ],
-    technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase']
+    technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase'],
+    modelType: 'phone'
   },
   {
     id: 'digital-marketing',
     title: 'Digital Marketing',
     description: 'Comprehensive digital marketing strategies to grow your business.',
-    icon: BarChart3,
+    icon: '📊',
     features: [
       'Search Engine Optimization (SEO)',
       'Social Media Marketing',
@@ -59,13 +63,14 @@ const services = [
       'Conversion Rate Optimization',
       'Brand Development'
     ],
-    technologies: ['Google Analytics', 'Google Ads', 'Facebook Ads', 'Mailchimp', 'HubSpot']
+    technologies: ['Google Analytics', 'Google Ads', 'Facebook Ads', 'Mailchimp', 'HubSpot'],
+    modelType: 'chart'
   },
   {
     id: 'ui-ux-design',
     title: 'UI/UX Design',
     description: 'Beautiful, intuitive user interfaces that enhance user experience.',
-    icon: Palette,
+    icon: '🎨',
     features: [
       'User Research & Analysis',
       'Wireframing & Prototyping',
@@ -76,13 +81,14 @@ const services = [
       'Interactive Prototypes',
       'Design Handoff'
     ],
-    technologies: ['Figma', 'Adobe Creative Suite', 'Sketch', 'InVision', 'Principle']
+    technologies: ['Figma', 'Adobe Creative Suite', 'Sketch', 'InVision', 'Principle'],
+    modelType: 'palette'
   },
   {
     id: 'ecommerce',
     title: 'E-commerce Solutions',
     description: 'Complete e-commerce platforms that drive sales and growth.',
-    icon: Globe,
+    icon: '🛒',
     features: [
       'Custom E-commerce Development',
       'Shopify Development',
@@ -93,13 +99,14 @@ const services = [
       'Customer Management',
       'Analytics & Reporting'
     ],
-    technologies: ['Shopify', 'WooCommerce', 'Stripe', 'PayPal', 'Magento']
+    technologies: ['Shopify', 'WooCommerce', 'Stripe', 'PayPal', 'Magento'],
+    modelType: 'shop'
   },
   {
     id: 'cloud-devops',
     title: 'Cloud & DevOps',
     description: 'Scalable cloud infrastructure and efficient development workflows.',
-    icon: Zap,
+    icon: '⚡',
     features: [
       'Cloud Infrastructure Setup',
       'CI/CD Pipeline Development',
@@ -110,7 +117,8 @@ const services = [
       'Auto-scaling Solutions',
       'Cost Optimization'
     ],
-    technologies: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Jenkins']
+    technologies: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Jenkins'],
+    modelType: 'cloud'
   }
 ];
 
@@ -162,20 +170,8 @@ const pricingPlans = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Our <span className="gradient-text">Services</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive software development and digital marketing solutions 
-              tailored to your business needs.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+      {/* Enhanced Hero Section */}
+      <ServicesHero />
 
       {/* Services Grid */}
       <section className="py-20">
@@ -192,47 +188,7 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {services.map((service, index) => (
-              <AnimatedSection key={service.id} delay={index * 0.1}>
-                <Card hover className="h-full">
-                  <div className="flex items-start space-x-4 mb-6">
-                    <div className="w-16 h-16 bg-primary-100 rounded-xl flex items-center justify-center">
-                      <service.icon size={32} className="text-primary-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600">{service.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-3">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                          <Check size={16} className="text-primary-500 mr-2 flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3">Technologies:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {service.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </Card>
-              </AnimatedSection>
+              <EnhancedServiceCard key={service.id} service={service} index={index} />
             ))}
           </div>
         </div>

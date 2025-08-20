@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import Card from '@/components/ui/Card';
 import { Users, Target, Award, Clock, Globe, Zap } from 'lucide-react';
+import AboutHero from '@/components/sections/AboutHero';
 
 export const metadata: Metadata = {
   title: 'About Us - Oaza Software',
@@ -11,20 +12,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              About <span className="gradient-text">Oaza Software</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-              We're a team of passionate technologists, designers, and strategists 
-              dedicated to transforming businesses through innovative digital solutions.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+      {/* Enhanced Hero Section */}
+      <AboutHero />
 
       {/* Mission & Vision */}
       <section className="py-20">
