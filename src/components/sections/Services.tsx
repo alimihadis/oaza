@@ -329,7 +329,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-title md:text-title-md lg:text-title-lg font-bold text-gray-900 mb-4 md:mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 break-words"
           >
             Our Services
           </motion.h2>
@@ -338,7 +338,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-subtitle md:text-subtitle-md lg:text-subtitle-lg text-gray-600 max-w-3xl mx-auto px-4 md:px-0"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-3xl mx-auto px-4 md:px-0"
           >
             We offer comprehensive software development and digital marketing services 
             to help your business thrive in the digital landscape.

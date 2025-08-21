@@ -351,10 +351,10 @@ export default function Preloader({ onComplete, duration = 1000 }: PreloaderProp
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-            className="mb-8 text-center relative"
+            className="mb-8 text-center relative px-4"
           >
             <motion.span
-              className="text-5xl md:text-6xl font-black tracking-wider"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-wider break-words"
               animate={{
                 textShadow: [
                   "0 0 20px rgba(59, 130, 246, 0.8)",
@@ -367,12 +367,12 @@ export default function Preloader({ onComplete, duration = 1000 }: PreloaderProp
               <span className="bg-gradient-to-r from-blue-400 via-cyan-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
                 OAZA
               </span>
-              <span className="text-white ml-4">SOFTWARE</span>
+              <span className="text-white ml-2 sm:ml-4">SOFTWARE</span>
             </motion.span>
             
             {/* Glitch Effect Overlay */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent opacity-0"
+              className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent opacity-0 break-words"
               animate={{
                 opacity: [0, 1, 0],
                 x: [0, -2, 2, 0],

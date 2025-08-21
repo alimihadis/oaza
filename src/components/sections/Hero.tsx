@@ -231,14 +231,14 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-container md:px-container-md lg:px-container-lg text-center" style={{ zIndex: 3 }}>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style={{ zIndex: 3 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-hero md:text-hero-md lg:text-hero-lg font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight break-words">
             We Build
             <span className="block gradient-text mt-2 md:mt-3">
               {typedText}
@@ -247,7 +247,7 @@ export default function Hero() {
             That Drive Growth
           </h1>
           
-          <p className="text-subtitle md:text-subtitle-md lg:text-subtitle-lg text-gray-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
             Professional software development and digital marketing services. 
             We transform ideas into powerful digital experiences that help businesses succeed.
           </p>
