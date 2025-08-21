@@ -2,17 +2,18 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { Sparkles, Zap, Code, Globe, SkipForward, Cpu, Atom, Layers } from 'lucide-react';
+import { Sparkles, Zap, Code, Globe, Cpu, Atom, Layers } from 'lucide-react';
 
 interface PreloaderProps {
   onComplete?: () => void;
   duration?: number;
 }
 
-export default function Preloader({ onComplete, duration = 4000 }: PreloaderProps) {
+export default function Preloader({ onComplete, duration = 1000 }: PreloaderProps) {
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
-  const [currentPhase, setCurrentPhase] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+  const [fadeProgress, setFadeProgress] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; vx: number; vy: number; life: number }>>([]);
   
@@ -21,14 +22,6 @@ export default function Preloader({ onComplete, duration = 4000 }: PreloaderProp
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { damping: 25, stiffness: 700 });
   const springY = useSpring(mouseY, { damping: 25, stiffness: 700 });
-
-  const loadingPhases = [
-    "Initializing Neural Networks...",
-    "Calibrating Quantum Systems...",
-    "Synchronizing Dimensions...",
-    "Establishing Reality Matrix...",
-    "Welcome to the Future"
-  ];
 
   // Mouse tracking for interactive effects
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
@@ -75,7 +68,7 @@ export default function Preloader({ onComplete, duration = 4000 }: PreloaderProp
     return () => clearInterval(interval);
   }, [particles.length]);
 
-  // Loading progress and phases
+  // Loading progress and completion
   useEffect(() => {
     const progressInterval = setInterval(() => {
       setProgress(prev => {
@@ -87,33 +80,32 @@ export default function Preloader({ onComplete, duration = 4000 }: PreloaderProp
       });
     }, 100);
 
-    const phaseInterval = setInterval(() => {
-      setCurrentPhase(prev => (prev + 1) % loadingPhases.length);
-    }, 800);
-
     const completeTimer = setTimeout(() => {
-      setIsComplete(true);
-      setTimeout(() => {
-        onComplete?.();
-      }, 1500);
+      setIsFading(true);
+      
+      // Smooth fade transition over 2 seconds
+      const fadeInterval = setInterval(() => {
+        setFadeProgress(prev => {
+          if (prev >= 1) {
+            clearInterval(fadeInterval);
+            setIsComplete(true);
+            onComplete?.();
+            return 1;
+          }
+          return prev + 0.02; // Increment by 2% every 40ms for smooth 2-second fade
+        });
+      }, 40);
+
+      return () => clearInterval(fadeInterval);
     }, duration);
 
     return () => {
       clearInterval(progressInterval);
-      clearInterval(phaseInterval);
       clearTimeout(completeTimer);
     };
   }, [duration, onComplete]);
 
-  const handleSkip = () => {
-    setProgress(100);
-    setTimeout(() => {
-      setIsComplete(true);
-      setTimeout(() => {
-        onComplete?.();
-      }, 1500);
-    }, 500);
-  };
+  // Removed handleSkip function as requested
 
   if (isComplete) return null;
 
@@ -123,9 +115,13 @@ export default function Preloader({ onComplete, duration = 4000 }: PreloaderProp
         ref={containerRef}
         onMouseMove={handleMouseMove}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ 
+          opacity: isFading ? 1 - fadeProgress : 1,
+          scale: isFading ? 1 + (fadeProgress * 0.1) : 1,
+          filter: isFading ? `blur(${fadeProgress * 10}px)` : 'blur(0px)'
+        }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.1, ease: "easeInOut" }}
         className="fixed inset-0 z-[9999] overflow-hidden perspective-1000 bg-black"
         style={{
           background: `
@@ -136,24 +132,8 @@ export default function Preloader({ onComplete, duration = 4000 }: PreloaderProp
           `
         }}
       >
-        {/* Debug info */}
-        <div className="absolute top-4 left-4 z-50 text-white text-sm bg-black/50 p-2 rounded">
-          Preloader Active - Progress: {Math.floor(progress)}%
-        </div>
-
         {/* Advanced Skip Button */}
-        <motion.button
-          onClick={handleSkip}
-          className="absolute top-6 right-6 z-50 px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-xl border border-white/20 rounded-2xl text-white/90 hover:text-white transition-all duration-500 flex items-center space-x-3 group"
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)"
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <SkipForward size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-          <span className="text-sm font-medium tracking-wider">SKIP</span>
-        </motion.button>
+        {/* Removed Skip button as requested */}
 
         {/* Dynamic Particle System */}
         <div className="absolute inset-0 pointer-events-none">
@@ -409,27 +389,6 @@ export default function Preloader({ onComplete, duration = 4000 }: PreloaderProp
             </motion.div>
           </motion.h1>
 
-          {/* Advanced Loading Text with Typewriter Effect */}
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-            className="mb-10"
-          >
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={currentPhase}
-                initial={{ y: 20, opacity: 0, scale: 0.9 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                exit={{ y: -20, opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
-                className="text-xl md:text-2xl text-blue-200 text-center font-mono tracking-wider"
-              >
-                {loadingPhases[currentPhase]}
-              </motion.p>
-            </AnimatePresence>
-          </motion.div>
-
           {/* Advanced 3D Progress Section */}
           <motion.div
             initial={{ y: 40, opacity: 0 }}
@@ -437,68 +396,6 @@ export default function Preloader({ onComplete, duration = 4000 }: PreloaderProp
             transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
             className="w-full max-w-lg px-8"
           >
-            {/* 3D Percentage Display */}
-            <motion.div
-              className="text-center mb-6"
-              initial={{ scale: 0.8, rotateX: -15 }}
-              animate={{ scale: 1, rotateX: 0 }}
-              transition={{ duration: 0.8, delay: 2 }}
-            >
-              <motion.span
-                className="text-7xl md:text-8xl font-black bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent"
-                key={Math.floor(progress)}
-                initial={{ scale: 1.3, opacity: 0.7, rotateY: -15 }}
-                animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                style={{ textShadow: "0 0 30px rgba(59, 130, 246, 0.5)" }}
-              >
-                {Math.floor(progress)}%
-              </motion.span>
-            </motion.div>
-
-            {/* 3D Circular Progress */}
-            <div className="relative w-64 h-64 mx-auto">
-              {/* Background Circle */}
-              <div className="absolute inset-0 w-full h-full border-4 border-white/10 rounded-full" />
-              
-              {/* Progress Circle */}
-              <motion.div
-                className="absolute inset-0 w-full h-full border-4 border-transparent rounded-full"
-                style={{
-                  background: `conic-gradient(from 0deg, transparent 0deg, #3b82f6 ${progress * 3.6}deg, transparent ${progress * 3.6}deg)`,
-                }}
-                initial={{ rotate: -90 }}
-                animate={{ rotate: -90 + (progress * 3.6) }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              />
-              
-              {/* Inner Glow */}
-              <motion.div
-                className="absolute inset-4 w-[calc(100%-32px)] h-[calc(100%-32px)] bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full backdrop-blur-sm"
-                animate={{
-                  boxShadow: [
-                    "0 0 20px rgba(59, 130, 246, 0.3)",
-                    "0 0 40px rgba(59, 130, 246, 0.6)",
-                    "0 0 20px rgba(59, 130, 246, 0.3)",
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              />
-              
-              {/* Center Content */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  className="text-center"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div className="text-2xl font-bold text-white mb-2">LOADING</div>
-                  <div className="text-sm text-blue-200 font-mono">SYSTEMS</div>
-                </motion.div>
-              </div>
-            </div>
           </motion.div>
 
           {/* Bottom Tech Icons with 3D Effects */}

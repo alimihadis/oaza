@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { Sparkles, Zap, Code, Globe, SkipForward, Cpu, Atom, Layers } from 'lucide-react';
+import { Sparkles, Zap, Code, Globe, Cpu, Atom, Layers } from 'lucide-react';
 import { usePerformanceDetection } from '@/lib/hooks/usePerformanceDetection';
 
 interface OptimizedPreloaderProps {
@@ -127,15 +127,7 @@ export default function OptimizedPreloader({ onComplete, duration = 4000 }: Opti
     };
   }, [duration, onComplete, isHighPerformance, loadingPhases.length]);
 
-  const handleSkip = () => {
-    setProgress(100);
-    setTimeout(() => {
-      setIsComplete(true);
-      setTimeout(() => {
-        onComplete?.();
-      }, 500);
-    }, 500);
-  };
+  // Removed handleSkip function as requested
 
   if (isComplete) return null;
 
@@ -171,18 +163,7 @@ export default function OptimizedPreloader({ onComplete, duration = 4000 }: Opti
         )}
 
         {/* Skip Button */}
-        <motion.button
-          onClick={handleSkip}
-          className="absolute top-6 right-6 z-50 px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-xl border border-white/20 rounded-2xl text-white/90 hover:text-white transition-all duration-500 flex items-center space-x-3 group"
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)"
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <SkipForward size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-          <span className="text-sm font-medium tracking-wider">SKIP</span>
-        </motion.button>
+        {/* Removed Skip button as requested */}
 
         {/* Conditional Particle System */}
         {config.enableParticles && (

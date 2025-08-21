@@ -231,31 +231,31 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style={{ zIndex: 3 }}>
+      <div className="relative z-10 max-w-7xl mx-auto px-container md:px-container-md lg:px-container-lg text-center" style={{ zIndex: 3 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+          <h1 className="text-hero md:text-hero-md lg:text-hero-lg font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
             We Build
-            <span className="block gradient-text">
+            <span className="block gradient-text mt-2 md:mt-3">
               {typedText}
               <span className="animate-pulse">|</span>
             </span>
             That Drive Growth
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-subtitle md:text-subtitle-md lg:text-subtitle-lg text-gray-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
             Professional software development and digital marketing services. 
             We transform ideas into powerful digital experiences that help businesses succeed.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mb-8 md:mb-12 px-4 md:px-0">
             <Button 
               size="lg" 
-              className="group"
+              className="group w-full sm:w-auto"
               onClick={() => scrollToSection('contact')}
             >
               Start Your Project
@@ -264,6 +264,7 @@ export default function Hero() {
             <Button 
               variant="outline" 
               size="lg"
+              className="w-full sm:w-auto"
               onClick={() => scrollToSection('portfolio')}
             >
               View Our Work
@@ -275,28 +276,28 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 max-w-2xl mx-auto px-4 md:px-0"
           >
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <Code size={32} className="text-primary-600" />
+                <Code size={28} className="text-primary-600 md:w-8 md:h-8" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">100+</div>
-              <div className="text-gray-600">Projects Completed</div>
+              <div className="text-xl md:text-2xl font-bold text-gray-900">100+</div>
+              <div className="text-sm md:text-base text-gray-600">Projects Completed</div>
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <TrendingUp size={32} className="text-primary-600" />
+                <TrendingUp size={28} className="text-primary-600 md:w-8 md:h-8" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">95%</div>
-              <div className="text-gray-600">Client Satisfaction</div>
+              <div className="text-xl md:text-2xl font-bold text-gray-900">95%</div>
+              <div className="text-sm md:text-base text-gray-600">Client Satisfaction</div>
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <Code size={32} className="text-primary-600" />
+                <Code size={28} className="text-primary-600 md:w-8 md:h-8" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">24/7</div>
-              <div className="text-gray-600">Support Available</div>
+              <div className="text-xl md:text-2xl font-bold text-gray-900">24/7</div>
+              <div className="text-sm md:text-base text-gray-600">Support Available</div>
             </div>
           </motion.div>
         </motion.div>
@@ -307,14 +308,14 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2"
         style={{ zIndex: 3 }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+        <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-gray-400 rounded-full flex justify-center">
           <motion.div
-            animate={{ y: [0, 12, 0] }}
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+            className="w-1 h-2 md:h-3 bg-gray-400 rounded-full mt-1.5 md:mt-2"
           />
         </div>
       </motion.div>

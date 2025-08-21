@@ -238,9 +238,9 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
         transition={{ duration: 0.3 }}
         className="transform-gpu"
       >
-        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:from-white hover:to-primary-50 transition-all duration-500">
-          {/* 3D Model Canvas */}
-          <div className="absolute top-4 right-4 w-30 h-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:from-white hover:to-primary-50 transition-all duration-500 p-6 md:p-8">
+          {/* 3D Model Canvas - Hidden on mobile for performance */}
+          <div className="absolute top-4 right-4 w-24 h-24 md:w-30 md:h-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block">
             <canvas
               ref={canvasRef}
               className="w-full h-full"
@@ -253,35 +253,36 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
 
           <div className="relative z-10">
             <motion.div 
-              className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl mb-6 group-hover:from-primary-200 group-hover:to-primary-300 transition-all duration-300"
+              className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl mb-4 md:mb-6 group-hover:from-primary-200 group-hover:to-primary-300 transition-all duration-300 mx-auto md:mx-0"
               whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {IconComponent && <IconComponent size={32} className="text-primary-600" />}
+              {IconComponent && <IconComponent size={28} className="text-primary-600 md:w-8 md:h-8" />}
             </motion.div>
             
-            <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors duration-300">
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors duration-300 text-center md:text-left">
               {service.title}
             </h3>
             
-            <p className="text-gray-600 mb-6 flex-grow group-hover:text-gray-700 transition-colors duration-300">
+            <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 flex-grow group-hover:text-gray-700 transition-colors duration-300 text-center md:text-left leading-relaxed">
               {service.description}
             </p>
             
-            <ul className="space-y-2">
+            <ul className="space-y-2 md:space-y-3">
               {service.features.map((feature, featureIndex) => (
                 <motion.li 
                   key={featureIndex} 
-                  className="flex items-center text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300"
+                  className="flex items-center text-xs md:text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: featureIndex * 0.1 }}
                 >
                   <motion.div 
-                    className="w-2 h-2 bg-primary-500 rounded-full mr-3 group-hover:bg-primary-600 transition-colors duration-300"
+                    className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary-500 rounded-full mr-2 md:mr-3 group-hover:bg-primary-600 transition-colors duration-300 flex-shrink-0"
                     whileHover={{ scale: 1.5 }}
                   />
-                  {feature}
+                  <span className="leading-relaxed">{feature}</span>
                 </motion.li>
               ))}
             </ul>
@@ -297,7 +298,7 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
 
 export default function Services() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <section className="py-section md:py-section-md lg:py-section-lg bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
       {/* Animated background waves */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -315,20 +316,20 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-container md:px-container-md lg:px-container-lg relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-title md:text-title-md lg:text-title-lg font-bold text-gray-900 mb-4 md:mb-6"
           >
             Our Services
           </motion.h2>
@@ -337,14 +338,14 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-subtitle md:text-subtitle-md lg:text-subtitle-lg text-gray-600 max-w-3xl mx-auto px-4 md:px-0"
           >
             We offer comprehensive software development and digital marketing services 
             to help your business thrive in the digital landscape.
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 px-4 md:px-0">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}

@@ -94,142 +94,65 @@ export default function Navigation() {
       {/* Enhanced Navigation Bar */}
       <motion.header
         ref={navbarRef}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/60 backdrop-blur-xl border-b border-white/20 shadow-lg"
         style={{
-          opacity: navbarOpacity,
+          background: `rgba(255, 255, 255, ${navbarOpacity})`,
           backdropFilter: `blur(${navbarBlur}px)`,
-          scale: navbarScale,
-          height: navbarHeight,
         }}
-        className={cn(
-          "fixed top-4 left-4 right-4 z-40 transition-all duration-700 ease-out rounded-2xl",
-          isScrolled 
-            ? "bg-white/80 backdrop-blur-2xl shadow-2xl shadow-black/10 border border-white/30" 
-            : "bg-white/60 backdrop-blur-xl border border-white/20"
-        )}
       >
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"
-            animate={{ 
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute top-0 right-1/4 w-24 h-24 bg-gradient-to-br from-pink-400/20 to-orange-400/20 rounded-full blur-3xl"
-            animate={{ 
-              x: [0, -80, 0],
-              y: [0, 60, 0],
-              scale: [1, 0.8, 1]
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="flex justify-between items-center h-full">
-            
-            {/* Enhanced Logo Section with Magnetic Effect */}
+        <div className="max-w-7xl mx-auto px-container md:px-container-md lg:px-container-lg">
+          <div className="flex items-center justify-between h-16 md:h-20 lg:h-24">
+            {/* Logo */}
             <motion.div
               ref={logoMagnetic.ref}
               style={logoMagnetic.style}
-              className="flex items-center space-x-3"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="flex items-center space-x-2"
             >
-              <Link href="/" className="flex items-center space-x-3 group">
-                {/* Premium Animated Logo Icon */}
+              <Link href="/" className="flex items-center space-x-2 group">
                 <motion.div
-                  className="relative w-12 h-12 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-700"
-                  whileHover={{ 
-                    rotate: [0, -15, 15, 0],
-                    scale: [1, 1.15, 1],
-                  }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <span className="text-white font-bold text-2xl relative z-10">O</span>
-                  
-                  {/* Enhanced Glow Effects */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-400 rounded-2xl opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-700"
-                    animate={{ 
-                      scale: [1, 1.3, 1],
-                      rotate: [0, 180, 360]
-                    }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  />
-                  
-                  {/* Sparkle Effect */}
-                  <motion.div
-                    className="absolute -top-1 -right-1 text-blue-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    animate={{ 
-                      scale: [0, 1, 0],
-                      rotate: [0, 180]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                  >
-                    <Sparkles size={12} />
-                  </motion.div>
+                  <span className="text-white font-bold text-sm md:text-base lg:text-lg">O</span>
                 </motion.div>
-                
-                {/* Enhanced Company Name */}
-                <motion.div
-                  className="hidden sm:block"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                >
-                  <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent">
-                    Oaza Software
-                  </span>
-                </motion.div>
+                <span className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  Oaza Software
+                </span>
               </Link>
             </motion.div>
 
-            {/* Enhanced Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-2">
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-1">
               {navigationItems.map((item, index) => (
                 <motion.div
                   key={item.href}
-                  initial={{ opacity: 0, y: -30 }}
+                  initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1, ease: "easeOut" }}
+                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   className="relative"
-                  onHoverStart={() => setHoveredItem(item.href)}
-                  onHoverEnd={() => setHoveredItem(null)}
                 >
                   <Link
                     href={item.href}
                     onClick={() => handleNavClick(item.href)}
                     className={cn(
-                      "relative px-5 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 transition-all duration-500 rounded-xl group overflow-hidden",
-                      activePage === item.href && "text-blue-600 font-semibold"
+                      "relative px-4 py-2 text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-xl group font-medium",
+                      activePage === item.href && "text-blue-600"
                     )}
+                    onMouseEnter={() => setHoveredItem(item.href)}
+                    onMouseLeave={() => setHoveredItem(null)}
                   >
-                    {/* Hover Background Effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"
-                      initial={{ scale: 0.8 }}
-                      whileHover={{ scale: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    
-                    <span className="relative z-10">{item.label}</span>
-                    
-                    {/* Enhanced Hover Underline Effect */}
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
-                      initial={{ scaleX: 0, originX: 0 }}
-                      animate={{ 
-                        scaleX: hoveredItem === item.href ? 1 : 0 
-                      }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                    />
-                    
-                    {/* Active Page Indicator */}
+                    {item.label}
+                    {hoveredItem === item.href && (
+                      <motion.div
+                        className="absolute inset-0 bg-blue-50 rounded-xl -z-10"
+                        layoutId="hoveredItem"
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      />
+                    )}
                     {activePage === item.href && (
                       <motion.div
                         className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl -z-10 border border-blue-200/50"
@@ -242,10 +165,26 @@ export default function Navigation() {
               ))}
             </nav>
 
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="hidden lg:block"
+            >
+              <Link
+                href="/contact"
+                onClick={() => handleNavClick('/contact')}
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
+              >
+                Get Started
+              </Link>
+            </motion.div>
+
             {/* Enhanced Mobile Menu Button */}
             <motion.button
               onClick={toggleMenu}
-              className="lg:hidden relative p-3 text-gray-700 hover:text-blue-600 transition-colors duration-300 rounded-xl hover:bg-white/50 backdrop-blur-sm"
+              className="lg:hidden relative p-2.5 md:p-3 text-gray-700 hover:text-blue-600 transition-colors duration-300 rounded-xl hover:bg-white/50 backdrop-blur-sm touch-manipulation active:scale-95"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
@@ -259,7 +198,7 @@ export default function Navigation() {
                     exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <X size={24} />
+                    <X size={22} className="md:w-6 md:h-6" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -269,7 +208,7 @@ export default function Navigation() {
                     exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <Menu size={24} />
+                    <Menu size={22} className="md:w-6 md:h-6" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -285,9 +224,9 @@ export default function Navigation() {
               animate={{ opacity: 1, height: "auto", scaleY: 1 }}
               exit={{ opacity: 0, height: 0, scaleY: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="lg:hidden bg-white/95 backdrop-blur-2xl border-t border-white/30 overflow-hidden"
+              className="lg:hidden bg-white/95 backdrop-blur-2xl border-t border-white/30 overflow-hidden shadow-mobile-xl"
             >
-              <div className="px-6 py-8 space-y-4">
+              <div className="px-4 md:px-6 py-6 md:py-8 space-y-2 md:space-y-4">
                 {navigationItems.map((item, index) => (
                   <motion.div
                     key={item.href}
@@ -299,14 +238,14 @@ export default function Navigation() {
                       href={item.href}
                       onClick={() => handleNavClick(item.href)}
                       className={cn(
-                        "block px-6 py-4 text-lg font-medium rounded-2xl transition-all duration-500 group border border-transparent",
+                        "block px-4 md:px-6 py-3 md:py-4 text-base md:text-lg font-medium rounded-2xl transition-all duration-500 group border border-transparent touch-manipulation",
                         activePage === item.href
-                          ? "text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200/50 shadow-lg"
-                          : "text-gray-700 hover:text-blue-600 hover:bg-white/50 hover:border-white/50"
+                          ? "text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200/50 shadow-mobile-lg"
+                          : "text-gray-700 hover:text-blue-600 hover:bg-white/50 hover:border-white/50 active:bg-gray-50 active:scale-95"
                       )}
                     >
                       <div className="flex items-center justify-between">
-                        <span>{item.label}</span>
+                        <span className="font-medium">{item.label}</span>
                         <motion.div
                           className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                           animate={{ x: [0, 8, 0] }}
@@ -318,6 +257,22 @@ export default function Navigation() {
                     </Link>
                   </motion.div>
                 ))}
+                
+                {/* Mobile CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
+                  className="pt-4 md:pt-6 border-t border-gray-100"
+                >
+                  <Link
+                    href="/contact"
+                    onClick={() => handleNavClick('/contact')}
+                    className="block w-full px-4 md:px-6 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl text-center transition-all duration-300 hover:from-blue-700 hover:to-purple-700 active:scale-95 shadow-mobile-lg touch-manipulation"
+                  >
+                    Get Started
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
           )}
@@ -325,7 +280,7 @@ export default function Navigation() {
       </motion.header>
 
       {/* Spacer for fixed navbar */}
-      <div className="h-24 lg:h-28" />
+      <div className="h-16 md:h-20 lg:h-24" />
     </>
   );
 }

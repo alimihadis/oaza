@@ -133,118 +133,187 @@
     filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.5));
   }
 
-  .nav-item-hover {
-    @apply relative overflow-hidden;
+  /* Mobile-First Responsive Utilities */
+  .mobile-container {
+    @apply px-4 md:px-6 lg:px-8;
   }
 
-  .nav-item-hover::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 opacity-0 transition-opacity duration-500 rounded-xl;
+  .mobile-section {
+    @apply py-12 md:py-16 lg:py-20;
   }
 
-  .nav-item-hover:hover::before {
-    @apply opacity-100;
+  .mobile-text-hero {
+    @apply text-3xl md:text-5xl lg:text-6xl;
   }
 
-  .cta-button-premium {
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+  .mobile-text-title {
+    @apply text-2xl md:text-3xl lg:text-4xl;
   }
 
-  .cta-button-premium:hover {
-    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f97316 100%);
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
-    transform: translateY(-2px);
+  .mobile-text-subtitle {
+    @apply text-lg md:text-xl lg:text-2xl;
   }
 
-  .progress-bar-glow {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  .mobile-text-body {
+    @apply text-sm md:text-base lg:text-lg;
   }
 
-  /* Premium Preloader Effects */
-  .preloader-bg {
-    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, rgba(15, 23, 42, 0.95) 70%);
+  .mobile-text-caption {
+    @apply text-xs md:text-sm;
   }
 
-  .preloader-logo-glow {
-    filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.6));
+  /* Mobile-Optimized Touch Interactions */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
   }
 
-  .preloader-text-glow {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .preloader-progress-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
+  .mobile-card {
+    @apply p-4 md:p-6 lg:p-8;
   }
 
-  .preloader-particle-float {
-    animation: particle-float 4s ease-in-out infinite;
+  .mobile-grid {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
   }
 
-  .preloader-geometric-rotate {
-    animation: geometric-rotate 20s linear infinite;
+  .mobile-gap {
+    @apply gap-4 md:gap-6 lg:gap-8;
   }
 
-  /* Advanced 3D Preloader Effects */
-  .preloader-3d-container {
-    transform-style: preserve-3d;
-    perspective: 2000px;
+  /* Mobile-Specific Shadows */
+  .shadow-mobile {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .preloader-holographic {
-    background: linear-gradient(45deg, 
-      rgba(59, 130, 246, 0.1) 0%, 
-      rgba(139, 92, 246, 0.1) 25%, 
-      rgba(6, 182, 212, 0.1) 50%, 
-      rgba(236, 72, 153, 0.1) 75%, 
-      rgba(59, 130, 246, 0.1) 100%
-    );
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .shadow-mobile-lg {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   }
 
-  .preloader-neon-glow {
-    box-shadow: 
-      0 0 20px rgba(59, 130, 246, 0.5),
-      0 0 40px rgba(59, 130, 246, 0.3),
-      0 0 60px rgba(59, 130, 246, 0.1),
-      inset 0 0 20px rgba(59, 130, 246, 0.1);
+  .shadow-mobile-xl {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   }
 
-  .preloader-matrix-bg {
-    background-image: 
-      radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-      linear-gradient(45deg, 
-        rgba(15, 23, 42, 0.9) 0%, 
-        rgba(30, 41, 59, 0.8) 25%, 
-        rgba(51, 65, 85, 0.7) 50%, 
-        rgba(30, 41, 59, 0.8) 75%, 
-        rgba(15, 23, 42, 0.9) 100%
-      );
+  /* Mobile Navigation Enhancements */
+  .mobile-nav-item {
+    @apply block w-full px-4 py-3 text-base font-medium rounded-xl transition-all duration-300;
   }
 
-  .preloader-energy-field {
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      rgba(59, 130, 246, 0.2) 90deg,
-      rgba(6, 182, 212, 0.2) 180deg,
-      rgba(139, 92, 246, 0.2) 270deg,
-      transparent 360deg
-    );
-    animation: energy-rotate 10s linear infinite;
+  .mobile-nav-active {
+    @apply bg-gradient-to-r from-blue-50 to-purple-50 text-blue-600 border border-blue-200/50;
   }
 
-  .preloader-quantum-pulse {
-    animation: quantum-pulse 3s ease-in-out infinite;
+  .mobile-nav-hover {
+    @apply hover:bg-white/50 hover:text-blue-600 active:scale-95;
   }
 
-  .preloader-dimension-shift {
-    animation: dimension-shift 8s ease-in-out infinite;
+  /* Mobile Button Enhancements */
+  .mobile-btn-primary {
+    @apply w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 hover:from-blue-700 hover:to-purple-700 active:scale-95 shadow-mobile-lg;
+  }
+
+  .mobile-btn-secondary {
+    @apply w-full sm:w-auto px-6 py-3 border-2 border-gray-300 text-gray-700 font-medium rounded-xl transition-all duration-300 hover:border-blue-500 hover:text-blue-600 active:scale-95;
+  }
+
+  /* Mobile Icon Sizes */
+  .mobile-icon-sm {
+    @apply w-5 h-5 md:w-6 md:h-6;
+  }
+
+  .mobile-icon-md {
+    @apply w-6 h-6 md:w-8 md:h-8;
+  }
+
+  .mobile-icon-lg {
+    @apply w-8 h-8 md:w-10 md:h-10;
+  }
+
+  .mobile-icon-xl {
+    @apply w-10 h-10 md:w-12 md:h-12;
+  }
+
+  /* Mobile Spacing Utilities */
+  .mobile-space-y {
+    @apply space-y-4 md:space-y-6 lg:space-y-8;
+  }
+
+  .mobile-space-x {
+    @apply space-x-3 md:space-x-4 lg:space-x-6;
+  }
+
+  .mobile-margin {
+    @apply m-4 md:m-6 lg:m-8;
+  }
+
+  .mobile-padding {
+    @apply p-4 md:p-6 lg:p-8;
+  }
+
+  /* Mobile Animation Optimizations */
+  .mobile-animate-fade {
+    @apply transition-opacity duration-300 ease-out;
+  }
+
+  .mobile-animate-slide {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .mobile-animate-scale {
+    @apply transition-transform duration-200 ease-out;
+  }
+
+  /* Mobile Performance Optimizations */
+  .mobile-reduce-motion {
+    @media (prefers-reduced-motion: reduce) {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  .mobile-gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Mobile Accessibility */
+  .mobile-focus-visible {
+    @apply focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2;
+  }
+
+  .mobile-screen-reader {
+    @apply sr-only;
+  }
+
+  /* Mobile Dark Mode Support */
+  @media (prefers-color-scheme: dark) {
+    .mobile-dark-bg {
+      @apply bg-gray-900 text-white;
+    }
+    
+    .mobile-dark-card {
+      @apply bg-gray-800 border-gray-700;
+    }
+  }
+
+  /* Mobile High Contrast Support */
+  @media (prefers-contrast: high) {
+    .mobile-high-contrast {
+      @apply border-2 border-current;
+    }
+  }
+
+  /* Mobile Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-reduce-motion * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

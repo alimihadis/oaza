@@ -14,14 +14,11 @@ export function usePreloader() {
     return () => clearTimeout(timer);
   }, []);
 
-  const skipLoading = () => {
-    setIsLoading(false);
-    setIsInitialized(true);
-  };
+  // Removed skipLoading function as requested
 
   return {
     isLoading,
     isInitialized,
-    skipLoading
+    // Removed skipLoading from return
   };
 }
