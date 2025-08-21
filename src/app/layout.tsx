@@ -15,6 +15,11 @@ const exo2 = Exo_2({
 export const metadata: Metadata = {
   title: 'Oaza Software - Professional Software Development & Digital Marketing',
   description: 'Professional software development and digital marketing services. We transform ideas into powerful digital experiences that help businesses succeed.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({

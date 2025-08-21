@@ -109,7 +109,7 @@ export default function Navigation() {
             <motion.div
               ref={logoMagnetic.ref}
               style={logoMagnetic.style}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 relative"
             >
               <Link href="/" className="flex items-center space-x-2 group">
                 <motion.div

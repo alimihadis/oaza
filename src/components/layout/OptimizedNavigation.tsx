@@ -160,7 +160,7 @@ export default function OptimizedNavigation() {
             <motion.div
               ref={logoMagnetic.ref}
               style={isHighPerformance ? logoMagnetic.style : {}}
-              className="flex items-center space-x-3"
+              className="flex items-center space-x-3 relative"
               whileHover={{ scale: config.enableMouseEffects ? 1.05 : 1.02 }}
               transition={{ duration: config.animationDuration, ease: "easeOut" }}
             >

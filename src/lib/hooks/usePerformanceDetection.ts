@@ -137,6 +137,14 @@ export const performanceUtils = {
   
   // Check if element is in viewport
   isInViewport: (element: Element): boolean => {
+    // Check if element has proper positioning for getBoundingClientRect
+    const computedStyle = window.getComputedStyle(element);
+    const position = computedStyle.position;
+    
+    if (position === 'static') {
+      console.warn('Please ensure that the container has a non-static position, like \'relative\', \'fixed\', or \'absolute\' to ensure scroll offset is calculated correctly.');
+    }
+    
     const rect = element.getBoundingClientRect();
     return (
       rect.top >= 0 &&

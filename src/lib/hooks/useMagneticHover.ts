@@ -28,6 +28,14 @@ export function useMagneticHover(options: MagneticHoverOptions = {}) {
     const element = ref.current;
     if (!element) return;
 
+    // Check if element has proper positioning for getBoundingClientRect
+    const computedStyle = window.getComputedStyle(element);
+    const position = computedStyle.position;
+    
+    if (position === 'static') {
+      console.warn('Please ensure that the container has a non-static position, like \'relative\', \'fixed\', or \'absolute\' to ensure scroll offset is calculated correctly.');
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       const rect = element.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
