@@ -9,11 +9,15 @@ export default function PreloaderWrapper() {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    console.log('PreloaderWrapper: Starting preloader...');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('PreloaderWrapper: Starting preloader...');
+    }
     
     // Simulate some initialization time
     const timer = setTimeout(() => {
-      console.log('PreloaderWrapper: Timer completed, setting loading to false');
+      if (process.env.NODE_ENV === 'development') {
+        console.log('PreloaderWrapper: Timer completed, setting loading to false');
+      }
       setIsLoading(false);
       setTimeout(() => {
         setIsInitialized(true);
@@ -24,11 +28,15 @@ export default function PreloaderWrapper() {
   }, []);
 
   const handleComplete = () => {
-    console.log('PreloaderWrapper: handleComplete called');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('PreloaderWrapper: handleComplete called');
+    }
     setIsLoading(false);
   };
 
-  console.log('PreloaderWrapper: Render - isLoading:', isLoading, 'isInitialized:', isInitialized);
+  if (process.env.NODE_ENV === 'development') {
+    console.log('PreloaderWrapper: Render - isLoading:', isLoading, 'isInitialized:', isInitialized);
+  }
 
   return (
     <div className="relative w-full h-full">

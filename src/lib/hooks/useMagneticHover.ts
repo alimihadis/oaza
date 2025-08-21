@@ -32,7 +32,7 @@ export function useMagneticHover(options: MagneticHoverOptions = {}) {
     const computedStyle = window.getComputedStyle(element);
     const position = computedStyle.position;
     
-    if (position === 'static') {
+    if (position === 'static' && process.env.NODE_ENV === 'development') {
       console.warn('Please ensure that the container has a non-static position, like \'relative\', \'fixed\', or \'absolute\' to ensure scroll offset is calculated correctly.');
     }
 

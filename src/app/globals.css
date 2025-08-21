@@ -1,9 +1,9 @@
+/* EXO 2 Font Configuration */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* EXO 2 Font Configuration */
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   html {

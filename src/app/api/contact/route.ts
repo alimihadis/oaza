@@ -28,15 +28,17 @@ export async function POST(request: NextRequest) {
     // 3. Integrate with CRM
     // 4. Log the contact request
     
-    // For now, we'll just log and return success
-    console.log('Contact form submission:', {
-      name: body.name,
-      email: body.email,
-      company: body.company,
-      service: body.service,
-      message: body.message,
-      timestamp: new Date().toISOString()
-    });
+    // For now, we'll just log and return success (development only)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Contact form submission:', {
+        name: body.name,
+        email: body.email,
+        company: body.company,
+        service: body.service,
+        message: body.message,
+        timestamp: new Date().toISOString()
+      });
+    }
 
     // Simulate processing delay
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -50,7 +52,9 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Contact form error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Contact form error:', error);
+    }
     
     return NextResponse.json(
       { 
