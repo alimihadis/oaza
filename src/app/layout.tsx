@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import PreloaderWrapper from '@/components/layout/PreloaderWrapper';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const exo2 = Exo_2({ 
   subsets: ['latin'],
@@ -33,14 +34,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${exo2.variable} font-exo2`}>
-        <PreloaderWrapper />
-        <Header />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning className="dark">
+      <body className={`${exo2.variable} font-exo2 bg-dark-950 text-gray-100 transition-colors duration-300`}>
+        <ThemeProvider>
+          <PreloaderWrapper />
+          <Header />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

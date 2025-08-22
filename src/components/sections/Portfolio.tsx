@@ -117,21 +117,21 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
         // Laptop model
         const laptopGeometry = new THREE.BoxGeometry(1.2, 0.1, 0.8);
         const laptopMaterial = new THREE.MeshPhongMaterial({ 
-          color: 0x2563eb,
+          color: 0xa8edea,
           shininess: 100
         });
         model = new THREE.Mesh(laptopGeometry, laptopMaterial);
         
         // Add screen
         const screenGeometry = new THREE.BoxGeometry(1.1, 0.05, 0.7);
-        const screenMaterial = new THREE.MeshPhongMaterial({ color: 0x1e40af });
+        const screenMaterial = new THREE.MeshPhongMaterial({ color: 0x0d9488 });
         const screen = new THREE.Mesh(screenGeometry, screenMaterial);
         screen.position.y = 0.075;
         model.add(screen);
         
         // Add keyboard
         const keyboardGeometry = new THREE.BoxGeometry(1.1, 0.02, 0.7);
-        const keyboardMaterial = new THREE.MeshPhongMaterial({ color: 0x1e293b });
+        const keyboardMaterial = new THREE.MeshPhongMaterial({ color: 0x115e59 });
         const keyboard = new THREE.Mesh(keyboardGeometry, keyboardMaterial);
         keyboard.position.y = -0.06;
         model.add(keyboard);
@@ -141,21 +141,21 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
         // Phone model
         const phoneGeometry = new THREE.BoxGeometry(0.4, 0.8, 0.05);
         const phoneMaterial = new THREE.MeshPhongMaterial({ 
-          color: 0x7c3aed,
+          color: 0xa18cd1,
           shininess: 100
         });
         model = new THREE.Mesh(phoneGeometry, phoneMaterial);
         
         // Add screen
         const phoneScreenGeometry = new THREE.BoxGeometry(0.35, 0.7, 0.02);
-        const phoneScreenMaterial = new THREE.MeshPhongMaterial({ color: 0x5b21b6 });
+        const phoneScreenMaterial = new THREE.MeshPhongMaterial({ color: 0x7c3aed });
         const phoneScreen = new THREE.Mesh(phoneScreenGeometry, phoneScreenMaterial);
         phoneScreen.position.z = 0.035;
         model.add(phoneScreen);
         
         // Add home button
         const buttonGeometry = new THREE.CircleGeometry(0.05, 16);
-        const buttonMaterial = new THREE.MeshPhongMaterial({ color: 0x1e1b4b });
+        const buttonMaterial = new THREE.MeshPhongMaterial({ color: 0x581c87 });
         const button = new THREE.Mesh(buttonGeometry, buttonMaterial);
         button.position.set(0, -0.3, 0.035);
         button.rotation.x = -Math.PI / 2;
@@ -165,14 +165,14 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
       case 'marketing':
         // Chart model
         const chartGeometry = new THREE.BoxGeometry(1, 0.8, 0.1);
-        const chartMaterial = new THREE.MeshPhongMaterial({ color: 0x059669 });
+        const chartMaterial = new THREE.MeshPhongMaterial({ color: 0x89f7fe });
         model = new THREE.Mesh(chartGeometry, chartMaterial);
         
         // Add bars
         for (let i = 0; i < 5; i++) {
           const barHeight = 0.1 + Math.random() * 0.6;
           const barGeometry = new THREE.BoxGeometry(0.12, barHeight, 0.08);
-          const barMaterial = new THREE.MeshPhongMaterial({ color: 0x10b981 });
+          const barMaterial = new THREE.MeshPhongMaterial({ color: 0x66a6ff });
           const bar = new THREE.Mesh(barGeometry, barMaterial);
           bar.position.set((i - 2) * 0.2, barHeight / 2, 0.09);
           model.add(bar);
@@ -196,7 +196,7 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
     scene.add(directionalLight);
 
     // Add point light for glow effect
-    const pointLight = new THREE.PointLight(0x3b82f6, 1, 10);
+    const pointLight = new THREE.PointLight(0xa8edea, 1, 10);
     pointLight.position.set(0, 2, 2);
     scene.add(pointLight);
 
@@ -279,7 +279,7 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
         transition={{ duration: 0.3 }}
         className="transform-gpu"
       >
-        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:from-white hover:to-primary-50 transition-all duration-500">
+        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 dark:from-dark-800 dark:to-dark-700 hover:from-white hover:to-pastel-50 dark:hover:from-dark-800 dark:hover:to-pastel-dark-100 transition-all duration-500">
           {/* 3D Model Canvas */}
           {is3DVisible && (
             <div className="absolute top-4 right-4 w-50 h-50 opacity-100 transition-opacity duration-500 z-20">
@@ -291,7 +291,7 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
           )}
 
           {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-pastel-500/5 dark:from-pastel-dark-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
 
           {/* Image with overlay */}
           <div className="relative">
@@ -304,9 +304,9 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
             {/* 3D Toggle Button */}
             <button
               onClick={handle3DToggle}
-              className="absolute top-4 left-4 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors duration-200 shadow-lg"
+              className="w-10 h-10 bg-white/90 dark:bg-dark-700/90 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-dark-600 transition-colors duration-200 shadow-lg"
             >
-              <Eye size={16} className="text-gray-700" />
+              <Eye size={16} className="text-gray-700 dark:text-gray-300" />
             </button>
             
             {/* Action Buttons */}
@@ -316,23 +316,23 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors duration-200 shadow-lg"
+                  className="w-10 h-10 bg-white/90 dark:bg-dark-700/90 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-dark-600 transition-colors duration-200 shadow-lg"
                 >
-                  <ExternalLink size={16} className="text-gray-700" />
+                  <ExternalLink size={16} className="text-gray-700 dark:text-gray-300" />
                 </a>
               )}
-              <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                <Github size={16} className="text-gray-700" />
+              <div className="w-10 h-10 bg-white/90 dark:bg-dark-700/90 rounded-full flex items-center justify-center shadow-lg">
+                <Github size={16} className="text-gray-700 dark:text-gray-300" />
               </div>
             </div>
 
             {/* Category Badge */}
             <div className="absolute bottom-4 left-4">
               <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
-                item.category === 'web' ? 'bg-blue-100 text-blue-800' :
-                item.category === 'mobile' ? 'bg-green-100 text-green-800' :
-                'bg-purple-100 text-purple-800'
-              }`}>
+                item.category === 'web' ? 'bg-pastel-100 dark:bg-pastel-dark-200 text-pastel-800 dark:text-pastel-300' :
+                item.category === 'mobile' ? 'bg-lavender-100 dark:bg-lavender-dark-200 text-lavender-800 dark:text-lavender-300' :
+                'bg-sky-100 dark:bg-sky-dark-200 text-sky-800 dark:text-sky-300'
+              } transition-colors duration-300`}>
                 {item.category === 'web' ? 'Web Development' :
                  item.category === 'mobile' ? 'Mobile App' : 'Digital Marketing'}
               </span>
@@ -340,16 +340,16 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
           </div>
 
           <div className="p-6 relative z-10">
-            <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors duration-300">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-pastel-700 dark:group-hover:text-pastel-300 transition-colors duration-300">
               {item.title}
             </h3>
             
-            <p className="text-gray-600 mb-4 flex-grow group-hover:text-gray-700 transition-colors duration-300">
+            <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
               {item.description}
             </p>
 
             <div className="mb-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Technologies:</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">Technologies:</h4>
               <div className="flex flex-wrap gap-2">
                 {item.technologies.map((tech, techIndex) => (
                   <motion.span
@@ -358,7 +358,7 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: techIndex * 0.1 }}
-                    className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded group-hover:bg-primary-100 group-hover:text-primary-700 transition-colors duration-300"
+                    className="px-2 py-1 bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300 text-xs rounded group-hover:bg-pastel-100 dark:group-hover:bg-pastel-dark-200 group-hover:text-pastel-700 dark:group-hover:text-pastel-300 transition-colors duration-300"
                   >
                     {tech}
                   </motion.span>
@@ -370,7 +370,7 @@ const PortfolioCard = ({ item, index }: PortfolioCardProps) => {
           </div>
 
           {/* Depth shadow effect */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/5 dark:from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
         </Card>
       </motion.div>
     </motion.div>
@@ -391,10 +391,10 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <section id="portfolio" className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden transition-colors duration-300">
       {/* Animated background mesh */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"></div>
+      <div className="absolute inset-0 opacity-20 dark:opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-pastel-50 via-lavender-50 to-sky-50 dark:from-pastel-dark-300 dark:via-lavender-dark-300 dark:to-sky-dark-300"></div>
         <div className="absolute top-0 left-0 w-full h-full">
           <svg className="w-full h-full" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
             <path d="M0,400 C300,300 600,500 900,400 C1050,350 1200,450 1200,400 L1200,800 L0,800 Z" fill="url(#mesh1)" opacity="0.3">
@@ -402,9 +402,9 @@ export default function Portfolio() {
             </path>
             <defs>
               <linearGradient id="mesh1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
-                <stop offset="50%" style={{ stopColor: '#8b5cf6', stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: '#ec4899', stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: '#a8edea', stopOpacity: 1 }} />
+                <stop offset="50%" style={{ stopColor: '#a18cd1', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#89f7fe', stopOpacity: 1 }} />
               </linearGradient>
             </defs>
           </svg>
@@ -424,7 +424,7 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-3xl md:text-4xl font-bold gradient-sky mb-4"
           >
             Our Portfolio
           </motion.h2>
@@ -433,7 +433,7 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
           >
             Discover our successful projects and see how we've helped businesses 
             transform their digital presence and achieve remarkable results.
@@ -457,8 +457,8 @@ export default function Portfolio() {
                 onClick={() => handleCategoryChange(category.id)}
                 className={`flex items-center space-x-2 px-6 py-3 rounded-full border transition-all duration-300 ${
                   activeCategory === category.id
-                    ? 'border-primary-500 bg-primary-500 text-white shadow-lg shadow-primary-500/25'
-                    : 'border-gray-300 text-gray-700 hover:border-primary-500 hover:bg-primary-50 hover:text-primary-700'
+                    ? 'border-pastel-500 dark:border-pastel-400 bg-pastel-500 dark:bg-pastel-400 text-white shadow-lg shadow-pastel-500/25 dark:shadow-pastel-400/25'
+                    : 'border-gray-300 dark:border-dark-600 text-gray-700 dark:text-gray-300 hover:border-pastel-500 dark:hover:border-pastel-400 hover:bg-pastel-50 dark:hover:bg-pastel-dark-200 hover:text-pastel-700 dark:hover:text-pastel-300'
                 }`}
               >
                 <category.icon size={20} />

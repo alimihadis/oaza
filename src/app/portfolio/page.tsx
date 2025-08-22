@@ -95,7 +95,7 @@ const categories = [
 
 export default function PortfolioPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-dark-950 transition-colors duration-300">
       {/* Enhanced Hero Section */}
       <PortfolioHero />
 
@@ -104,14 +104,14 @@ export default function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter */}
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold gradient-dream mb-8">
               Featured Projects
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               {categories.map((category) => (
                 <button
                   key={category.id}
-                  className="flex items-center space-x-2 px-6 py-3 rounded-full border border-gray-300 hover:border-primary-500 hover:bg-primary-50 transition-all duration-200 text-gray-700 hover:text-primary-700"
+                  className="flex items-center space-x-2 px-6 py-3 rounded-full border border-gray-300 dark:border-dark-600 hover:border-pastel-500 dark:hover:border-pastel-400 hover:bg-pastel-50 dark:hover:bg-pastel-dark-100 transition-all duration-200 text-gray-700 dark:text-gray-300 hover:text-pastel-700 dark:hover:text-pastel-300"
                 >
                   <category.icon size={20} />
                   <span>{category.label}</span>
@@ -137,13 +137,13 @@ export default function PortfolioPage() {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors duration-200"
+                          className="w-8 h-8 bg-white/90 dark:bg-dark-800/90 rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-dark-700 transition-colors duration-200"
                         >
-                          <ExternalLink size={16} className="text-gray-700" />
+                          <ExternalLink size={16} className="text-gray-700 dark:text-gray-300" />
                         </a>
                       )}
-                      <div className="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center">
-                        <Github size={16} className="text-gray-700" />
+                      <div className="w-8 h-8 bg-white/90 dark:bg-dark-800/90 rounded-full flex items-center justify-center">
+                        <Github size={16} className="text-gray-700 dark:text-gray-300" />
                       </div>
                     </div>
                   </div>
@@ -151,30 +151,30 @@ export default function PortfolioPage() {
                   <div className="p-6">
                     <div className="mb-4">
                       <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
-                        item.category === 'web' ? 'bg-blue-100 text-blue-800' :
-                        item.category === 'mobile' ? 'bg-green-100 text-green-800' :
-                        'bg-purple-100 text-purple-800'
+                        item.category === 'web' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' :
+                        item.category === 'mobile' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' :
+                        'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
                       }`}>
                         {item.category === 'web' ? 'Web Development' :
                          item.category === 'mobile' ? 'Mobile App' : 'Digital Marketing'}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 transition-colors duration-300">
                       {item.title}
                     </h3>
                     
-                    <p className="text-gray-600 mb-4 flex-grow">
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow transition-colors duration-300">
                       {item.description}
                     </p>
 
                     <div className="mb-4">
-                      <h4 className="font-semibold text-gray-900 mb-2">Technologies:</h4>
+                      <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">Technologies:</h4>
                       <div className="flex flex-wrap gap-2">
                         {item.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
+                            className="px-2 py-1 bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300 text-xs rounded transition-colors duration-300"
                           >
                             {tech}
                           </span>
@@ -201,27 +201,27 @@ export default function PortfolioPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-dark-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <AnimatedSection delay={0.1}>
-              <div className="text-4xl font-bold text-primary-600 mb-2">200+</div>
-              <div className="text-gray-600">Projects Completed</div>
+              <div className="text-4xl font-bold text-pastel-600 dark:text-pastel-400 mb-2 transition-colors duration-300">200+</div>
+              <div className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Projects Completed</div>
             </AnimatedSection>
             
             <AnimatedSection delay={0.2}>
-              <div className="text-4xl font-bold text-primary-600 mb-2">50+</div>
-              <div className="text-gray-600">Happy Clients</div>
+              <div className="text-4xl font-bold text-lavender-600 dark:text-lavender-400 mb-2 transition-colors duration-300">50+</div>
+              <div className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Happy Clients</div>
             </AnimatedSection>
             
             <AnimatedSection delay={0.3}>
-              <div className="text-4xl font-bold text-primary-600 mb-2">95%</div>
-              <div className="text-gray-600">Client Satisfaction</div>
+              <div className="text-4xl font-bold text-sky-600 dark:text-sky-400 mb-2 transition-colors duration-300">95%</div>
+              <div className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Client Satisfaction</div>
             </AnimatedSection>
             
             <AnimatedSection delay={0.4}>
-              <div className="text-4xl font-bold text-primary-600 mb-2">5+</div>
-              <div className="text-gray-600">Years Experience</div>
+              <div className="text-4xl font-bold text-pastel-600 dark:text-pastel-400 mb-2 transition-colors duration-300">5+</div>
+              <div className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Years Experience</div>
             </AnimatedSection>
           </div>
         </div>
@@ -231,10 +231,10 @@ export default function PortfolioPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold gradient-sky mb-6">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto transition-colors duration-300">
               Let's create something amazing together. Our team is ready to bring 
               your vision to life with the same quality and dedication shown in our portfolio.
             </p>

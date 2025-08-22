@@ -213,7 +213,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-dark-950 transition-colors duration-300">
       {/* 3D Canvas Background */}
       <canvas
         ref={canvasRef}
@@ -226,8 +226,9 @@ export default function Hero() {
         style={{ y, opacity, zIndex: 2 }}
         className="absolute inset-0 overflow-hidden"
       >
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pastel-200 dark:bg-pastel-dark-300 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 dark:opacity-40 animate-bounce-gentle"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-lavender-200 dark:bg-lavender-dark-300 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 dark:opacity-40 animate-bounce-gentle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-200 dark:bg-sky-dark-300 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-50 dark:opacity-30 animate-float"></div>
       </motion.div>
 
       {/* Content */}
@@ -238,16 +239,16 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight break-words">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 mb-4 md:mb-6 leading-tight break-words transition-colors duration-300">
             We Build
-            <span className="block gradient-text mt-2 md:mt-3">
+            <span className="block gradient-dream-hero mt-2 md:mt-3">
               {typedText}
               <span className="animate-pulse">|</span>
             </span>
             That Drive Growth
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4 md:px-0 transition-colors duration-300">
             Professional software development and digital marketing services. 
             We transform ideas into powerful digital experiences that help businesses succeed.
           </p>
@@ -280,24 +281,24 @@ export default function Hero() {
           >
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <Code size={28} className="text-primary-600 md:w-8 md:h-8" />
+                <Code size={28} className="text-pastel-600 dark:text-pastel-400 md:w-8 md:h-8 transition-colors duration-300" />
               </div>
-              <div className="text-xl md:text-2xl font-bold text-gray-900">100+</div>
-              <div className="text-sm md:text-base text-gray-600">Projects Completed</div>
+              <div className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">100+</div>
+              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">Projects Completed</div>
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <TrendingUp size={28} className="text-primary-600 md:w-8 md:h-8" />
+                <TrendingUp size={28} className="text-lavender-600 dark:text-lavender-400 md:w-8 md:h-8 transition-colors duration-300" />
               </div>
-              <div className="text-xl md:text-2xl font-bold text-gray-900">95%</div>
-              <div className="text-sm md:text-base text-gray-600">Client Satisfaction</div>
+              <div className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">95%</div>
+              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">Client Satisfaction</div>
             </div>
             <div className="text-center">
               <div className="flex justify-center mb-2">
-                <Code size={28} className="text-primary-600 md:w-8 md:h-8" />
+                <Code size={28} className="text-sky-600 dark:text-sky-400 md:w-8 md:h-8 transition-colors duration-300" />
               </div>
-              <div className="text-xl md:text-2xl font-bold text-gray-900">24/7</div>
-              <div className="text-sm md:text-base text-gray-600">Support Available</div>
+              <div className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">24/7</div>
+              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">Support Available</div>
             </div>
           </motion.div>
         </motion.div>
@@ -311,11 +312,11 @@ export default function Hero() {
         className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2"
         style={{ zIndex: 3 }}
       >
-        <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-gray-400 rounded-full flex justify-center">
+        <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-gray-400 dark:border-gray-500 rounded-full flex justify-center transition-colors duration-300">
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-2 md:h-3 bg-gray-400 rounded-full mt-1.5 md:mt-2"
+            className="w-1 h-2 md:h-3 bg-gray-400 dark:bg-gray-500 rounded-full mt-1.5 md:mt-2 transition-colors duration-300"
           />
         </div>
       </motion.div>

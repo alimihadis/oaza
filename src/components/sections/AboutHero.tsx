@@ -280,9 +280,9 @@ export default function AboutHero() {
         style={{ y, opacity, zIndex: 2 }}
         className="absolute inset-0 overflow-hidden"
       >
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-bounce-gentle" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pastel-200 dark:bg-pastel-dark-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle transition-colors duration-300"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-lavender-200 dark:bg-lavender-dark-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle transition-colors duration-300" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-200 dark:bg-sky-dark-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-bounce-gentle transition-colors duration-300" style={{ animationDelay: '2s' }}></div>
       </motion.div>
 
       {/* Content */}
@@ -293,20 +293,18 @@ export default function AboutHero() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 mb-6 break-words">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 mb-6 break-words transition-colors duration-300">
             About
-            <span className="block gradient-text">
+            <span className="block gradient-dream-hero">
               {typedText}
               <span className="animate-pulse">|</span>
             </span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             We're a team of passionate technologists, designers, and strategists 
             dedicated to transforming businesses through innovative digital solutions.
           </p>
-
-
 
           {/* Value Icons Preview */}
           <motion.div
@@ -324,10 +322,10 @@ export default function AboutHero() {
                 whileHover={{ scale: 1.1, y: -5 }}
                 className="flex flex-col items-center space-y-2"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl flex items-center justify-center shadow-lg">
-                  <IconComponent size={32} className="text-purple-600" />
+                <div className={`w-16 h-16 bg-gradient-to-br ${index % 3 === 0 ? 'from-pastel-100 to-dream-end dark:from-pastel-dark-100 dark:to-lavender-dark-300' : index % 3 === 1 ? 'from-lavender-100 to-dreamLavender-end dark:from-lavender-dark-100 dark:to-sky-dark-300' : 'from-sky-100 to-dreamSky-end dark:from-sky-dark-100 dark:to-pastel-dark-300'} rounded-2xl flex items-center justify-center shadow-lg dark:shadow-dark-900/50 transition-colors duration-300`}>
+                  <IconComponent size={32} className={index % 3 === 0 ? 'text-pastel-600 dark:text-pastel-400' : index % 3 === 1 ? 'text-lavender-600 dark:text-lavender-400' : 'text-sky-600 dark:text-sky-400'} />
                 </div>
-                <span className="text-sm text-gray-600 font-medium">Value {index + 1}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300">Value {index + 1}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -342,11 +340,11 @@ export default function AboutHero() {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         style={{ zIndex: 3 }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-500 rounded-full flex justify-center transition-colors duration-300">
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+            className="w-1 h-3 bg-gray-400 dark:bg-gray-500 rounded-full mt-2 transition-colors duration-300"
           />
         </div>
       </motion.div>

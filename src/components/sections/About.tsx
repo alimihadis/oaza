@@ -32,7 +32,7 @@ const ValueCard = ({ icon, title, description, index }: ValueCardProps) => {
       onHoverEnd={() => setIsFlipped(false)}
       className="perspective-1000 touch-manipulation"
     >
-      <Card className="h-full transform-gpu transition-all duration-300 hover:shadow-2xl hover:shadow-primary-200/50 mobile-card overflow-hidden">
+      <Card className="h-full transform-gpu transition-all duration-300 hover:shadow-2xl hover:shadow-pastel-200/50 dark:hover:shadow-pastel-dark-300/50 mobile-card overflow-hidden">
         <div className="relative w-full h-full transition-all duration-300">
           {/* Front of card */}
           {!isFlipped && (
@@ -43,11 +43,11 @@ const ValueCard = ({ icon, title, description, index }: ValueCardProps) => {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
             >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-pastel-100 dark:bg-pastel-dark-200 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 transition-colors duration-300">
                 {icon}
               </div>
-              <h4 className="text-base md:text-lg font-semibold text-gray-800 mb-2">{title}</h4>
-              <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{description}</p>
+              <h4 className="text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 transition-colors duration-300">{title}</h4>
+              <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">{description}</p>
             </motion.div>
           )}
 
@@ -60,14 +60,14 @@ const ValueCard = ({ icon, title, description, index }: ValueCardProps) => {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
               style={{
-                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
+                background: 'linear-gradient(135deg, #a8edea, #fed6e3)',
               }}
             >
               <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                 {icon}
               </div>
-              <h4 className="text-base md:text-lg font-semibold text-white mb-2">{title}</h4>
-              <p className="text-xs md:text-sm text-white/90 leading-relaxed">{description}</p>
+              <h4 className="text-base md:text-lg font-semibold text-gray-800 mb-2">{title}</h4>
+              <p className="text-xs md:text-sm text-gray-700 leading-relaxed">{description}</p>
             </motion.div>
           )}
         </div>
@@ -88,46 +88,46 @@ export default function About() {
 
   const values = [
     {
-      icon: <Zap className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />,
+      icon: <Zap className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />,
       title: "Innovation",
       description: "Cutting-edge solutions that push boundaries"
     },
     {
-      icon: <Heart className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />,
+      icon: <Heart className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />,
       title: "Passion",
       description: "We love what we do and it shows in our work"
     },
     {
-      icon: <Shield className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />,
+      icon: <Shield className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />,
       title: "Quality",
       description: "Uncompromising standards in every project"
     },
     {
-      icon: <Star className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />,
+      icon: <Star className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />,
       title: "Excellence",
       description: "We strive for perfection in everything we do"
     },
     {
-      icon: <Users className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />,
+      icon: <Users className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />,
       title: "Collaboration",
       description: "Working together to achieve great results"
     },
     {
-      icon: <Target className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />,
+      icon: <Target className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />,
       title: "Results",
       description: "Focused on delivering measurable outcomes"
     }
   ];
 
   return (
-    <section ref={containerRef} className="py-section md:py-section-md lg:py-section-lg bg-white relative overflow-hidden">
+    <section ref={containerRef} className="py-section md:py-section-md lg:py-section-lg bg-white dark:bg-dark-950 relative overflow-hidden transition-colors duration-300">
       {/* Animated background */}
       <motion.div 
         style={{ y, opacity }}
         className="absolute inset-0 overflow-hidden pointer-events-none"
       >
-        <div className="absolute top-0 left-1/4 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-bounce-gentle"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-pink-100 to-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-bounce-gentle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-0 left-1/4 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-pastel-100 to-lavender-100 dark:from-pastel-dark-300 dark:to-lavender-dark-300 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-3xl opacity-70 dark:opacity-40 animate-bounce-gentle transition-colors duration-300"></div>
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-sky-100 to-dream-end dark:from-sky-dark-300 dark:to-lavender-dark-300 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-3xl opacity-70 dark:opacity-40 animate-bounce-gentle transition-colors duration-300" style={{ animationDelay: '1s' }}></div>
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-container md:px-container-md lg:px-container-lg relative z-10">
@@ -144,7 +144,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 break-words"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-lavender mb-4 md:mb-6 break-words"
           >
             About Oaza Software
           </motion.h2>
@@ -153,7 +153,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-3xl mx-auto px-4 md:px-0 leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 md:px-0 leading-relaxed transition-colors duration-300"
           >
             We are a passionate team of developers, designers, and digital marketers 
             dedicated to creating exceptional digital experiences that drive business growth.
@@ -182,12 +182,12 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4"
+                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-pastel-100 to-pastel-200 dark:from-pastel-dark-200 dark:to-pastel-dark-300 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 transition-colors duration-300"
               >
-                <Award className="w-6 h-6 md:w-8 md:h-8 text-primary-600" />
+                <Award className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />
               </motion.div>
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 md:mb-2">5+</div>
-              <div className="text-sm md:text-base text-gray-600">Years Experience</div>
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1 md:mb-2 transition-colors duration-300">5+</div>
+              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">Years Experience</div>
             </div>
             
             <div className="text-center">
@@ -196,12 +196,12 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-green-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4"
+                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-lavender-100 to-lavender-200 dark:from-lavender-dark-200 dark:to-lavender-dark-300 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 transition-colors duration-300"
               >
-                <Users className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
+                <Users className="w-6 h-6 md:w-8 md:h-8 text-lavender-600 dark:text-lavender-400 transition-colors duration-300" />
               </motion.div>
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 md:mb-2">50+</div>
-              <div className="text-sm md:text-base text-gray-600">Happy Clients</div>
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1 md:mb-2 transition-colors duration-300">50+</div>
+              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">Happy Clients</div>
             </div>
             
             <div className="text-center">
@@ -210,12 +210,12 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4"
+                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-sky-100 to-sky-200 dark:from-sky-dark-200 dark:to-sky-dark-300 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 transition-colors duration-300"
               >
-                <Clock className="w-6 h-6 md:w-8 md:h-8 text-purple-600" />
+                <Clock className="w-6 h-6 md:w-8 md:h-8 text-sky-600 dark:text-sky-400 transition-colors duration-300" />
               </motion.div>
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 md:mb-2">24/7</div>
-              <div className="text-sm md:text-base text-gray-600">Support Available</div>
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1 md:mb-2 transition-colors duration-300">24/7</div>
+              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">Support Available</div>
             </div>
             
             <div className="text-center">
@@ -224,12 +224,12 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-orange-100 to-red-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4"
+                className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-dream-start to-dream-end dark:from-pastel-dark-300 dark:to-lavender-dark-300 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 transition-colors duration-300"
               >
-                <Target className="w-6 h-6 md:w-8 md:h-8 text-orange-600" />
+                <Target className="w-6 h-6 md:w-8 md:h-8 text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />
               </motion.div>
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 md:mb-2">100%</div>
-              <div className="text-sm md:text-base text-gray-600">Success Rate</div>
+              <div className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-1 md:mb-2 transition-colors duration-300">100%</div>
+              <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 transition-colors duration-300">Success Rate</div>
             </div>
           </div>
         </motion.div>

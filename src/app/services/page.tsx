@@ -169,7 +169,7 @@ const pricingPlans = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-dark-950 transition-colors duration-300">
       {/* Enhanced Hero Section */}
       <ServicesHero />
 
@@ -177,10 +177,10 @@ export default function ServicesPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold gradient-dream mb-4">
               What We Offer
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
               From concept to deployment, we handle every aspect of your digital project 
               with expertise and precision.
             </p>
@@ -195,13 +195,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-dark-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold gradient-lavender mb-4">
               Pricing Plans
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300">
               Transparent pricing for our development services. Choose the plan that 
               best fits your project requirements.
             </p>
@@ -212,11 +212,11 @@ export default function ServicesPage() {
               <AnimatedSection key={plan.name} delay={index * 0.1}>
                 <Card 
                   hover 
-                  className={`relative h-full ${plan.popular ? 'ring-2 ring-primary-500' : ''}`}
+                  className={`relative h-full ${plan.popular ? 'ring-2 ring-pastel-500 dark:ring-pastel-400' : ''}`}
                 >
                   {plan.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                      <div className="bg-pastel-500 dark:bg-pastel-400 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center">
                         <Star size={16} className="mr-1" />
                         Most Popular
                       </div>
@@ -224,19 +224,19 @@ export default function ServicesPage() {
                   )}
 
                   <div className="text-center mb-8">
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">
                       {plan.name}
                     </h3>
-                    <div className="text-4xl font-bold text-primary-600 mb-2">
+                    <div className="text-4xl font-bold text-pastel-600 dark:text-pastel-400 mb-2 transition-colors duration-300">
                       {plan.price}
                     </div>
-                    <p className="text-gray-600">{plan.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">{plan.description}</p>
                   </div>
 
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                        <Check size={16} className="text-primary-500 mr-2 flex-shrink-0" />
+                      <li key={featureIndex} className="flex items-center text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                        <Check size={16} className="text-pastel-500 dark:text-pastel-400 mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -260,10 +260,10 @@ export default function ServicesPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold gradient-sky mb-6">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto transition-colors duration-300">
               Let's discuss your requirements and create a custom solution that 
               perfectly fits your business needs.
             </p>

@@ -7,6 +7,7 @@ import { Menu, X, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { NavigationItem } from '@/lib/types';
 import { useMagneticHover } from '@/lib/hooks/useMagneticHover';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const navigationItems: NavigationItem[] = [
   { label: 'Home', href: '/' },
@@ -87,8 +88,8 @@ export default function Navigation() {
         className="fixed top-0 left-0 right-0 h-1 z-50 origin-left"
         style={{ scaleX: scrollProgress }}
       >
-        <div className="h-full bg-gradient-to-r from-blue-500 via-purple-500 via-pink-500 to-orange-500 shadow-lg" />
-        <div className="h-full bg-gradient-to-r from-blue-400 via-purple-400 via-pink-400 to-orange-400 blur-sm opacity-50" />
+        <div className="h-full bg-gradient-to-r from-pastel-500 via-lavender-500 to-sky-500 shadow-lg" />
+        <div className="h-full bg-gradient-to-r from-pastel-400 via-lavender-400 to-sky-400 blur-sm opacity-50" />
       </motion.div>
 
       {/* Enhanced Navigation Bar */}
@@ -97,9 +98,8 @@ export default function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/60 backdrop-blur-xl border-b border-white/20 shadow-lg"
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-dark-700/50 shadow-lg dark:shadow-dark-950/50 transition-all duration-300"
         style={{
-          background: `rgba(255, 255, 255, ${navbarOpacity})`,
           backdropFilter: `blur(${navbarBlur}px)`,
         }}
       >
@@ -113,13 +113,13 @@ export default function Navigation() {
             >
               <Link href="/" className="flex items-center space-x-2 group">
                 <motion.div
-                  className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-pastel-500 to-dream-end dark:from-pastel-dark-500 dark:to-lavender-dark-500 rounded-xl flex items-center justify-center shadow-lg dark:shadow-dark-900/50 group-hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="text-white font-bold text-sm md:text-base lg:text-lg">O</span>
                 </motion.div>
-                <span className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                <span className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-pastel-600 dark:group-hover:text-pastel-400 transition-colors duration-300">
                   Oaza Software
                 </span>
               </Link>
@@ -139,8 +139,8 @@ export default function Navigation() {
                     href={item.href}
                     onClick={() => handleNavClick(item.href)}
                     className={cn(
-                      "relative px-4 py-2 text-gray-700 hover:text-blue-600 transition-all duration-300 rounded-xl group font-medium",
-                      activePage === item.href && "text-blue-600"
+                      "relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-pastel-600 dark:hover:text-pastel-400 transition-all duration-300 rounded-xl group font-medium",
+                      activePage === item.href && "text-pastel-600 dark:text-pastel-400"
                     )}
                     onMouseEnter={() => setHoveredItem(item.href)}
                     onMouseLeave={() => setHoveredItem(null)}
@@ -148,14 +148,14 @@ export default function Navigation() {
                     {item.label}
                     {hoveredItem === item.href && (
                       <motion.div
-                        className="absolute inset-0 bg-blue-50 rounded-xl -z-10"
+                        className="absolute inset-0 bg-pastel-50 dark:bg-pastel-dark-100 rounded-xl -z-10"
                         layoutId="hoveredItem"
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       />
                     )}
                     {activePage === item.href && (
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl -z-10 border border-blue-200/50"
+                        className="absolute inset-0 bg-gradient-to-r from-pastel-100 to-dream-end dark:from-pastel-dark-200 dark:to-lavender-dark-300 rounded-xl -z-10 border border-pastel-200/50 dark:border-pastel-dark-300/50"
                         layoutId="activePage"
                         transition={{ duration: 0.4, ease: "easeOut" }}
                       />
@@ -165,26 +165,31 @@ export default function Navigation() {
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="hidden lg:block"
-            >
-              <Link
-                href="/contact"
-                onClick={() => handleNavClick('/contact')}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
+            {/* Right side controls */}
+            <div className="hidden lg:flex items-center space-x-4">
+              {/* Theme Toggle */}
+              <ThemeToggle />
+              
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
               >
-                Get Started
-              </Link>
-            </motion.div>
+                <Link
+                  href="/contact"
+                  onClick={() => handleNavClick('/contact')}
+                  className="px-6 py-3 bg-gradient-to-r from-pastel-500 to-dream-end dark:from-pastel-dark-500 dark:to-lavender-dark-500 text-white font-semibold rounded-xl hover:from-pastel-600 hover:to-dream-end/90 dark:hover:from-pastel-dark-600 dark:hover:to-lavender-dark-600 transition-all duration-300 shadow-lg dark:shadow-dark-900/50 hover:shadow-xl active:scale-95"
+                >
+                  Get Started
+                </Link>
+              </motion.div>
+            </div>
 
             {/* Enhanced Mobile Menu Button */}
             <motion.button
               onClick={toggleMenu}
-              className="lg:hidden relative p-2.5 md:p-3 text-gray-700 hover:text-blue-600 transition-colors duration-300 rounded-xl hover:bg-white/50 backdrop-blur-sm touch-manipulation active:scale-95"
+              className="lg:hidden relative p-2.5 md:p-3 text-gray-700 dark:text-gray-300 hover:text-pastel-600 dark:hover:text-pastel-400 transition-colors duration-300 rounded-xl hover:bg-gray-100/80 dark:hover:bg-dark-700/80 backdrop-blur-sm touch-manipulation active:scale-95"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
@@ -224,9 +229,14 @@ export default function Navigation() {
               animate={{ opacity: 1, height: "auto", scaleY: 1 }}
               exit={{ opacity: 0, height: 0, scaleY: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="lg:hidden bg-white/95 backdrop-blur-2xl border-t border-white/30 overflow-hidden shadow-mobile-xl"
+              className="lg:hidden bg-white/95 dark:bg-dark-900/95 backdrop-blur-2xl border-t border-gray-200/50 dark:border-dark-700/50 overflow-hidden shadow-mobile-xl dark:shadow-dark-950/50 transition-all duration-300"
             >
               <div className="px-4 md:px-6 py-6 md:py-8 space-y-2 md:space-y-4">
+                {/* Mobile Theme Toggle */}
+                <div className="flex justify-center pb-4 border-b border-gray-200 dark:border-dark-700">
+                  <ThemeToggle />
+                </div>
+                
                 {navigationItems.map((item, index) => (
                   <motion.div
                     key={item.href}
@@ -240,8 +250,8 @@ export default function Navigation() {
                       className={cn(
                         "block px-4 md:px-6 py-3 md:py-4 text-base md:text-lg font-medium rounded-2xl transition-all duration-500 group border border-transparent touch-manipulation",
                         activePage === item.href
-                          ? "text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200/50 shadow-mobile-lg"
-                          : "text-gray-700 hover:text-blue-600 hover:bg-white/50 hover:border-white/50 active:bg-gray-50 active:scale-95"
+                          ? "text-pastel-600 dark:text-pastel-400 bg-gradient-to-r from-pastel-50 to-dream-end dark:from-pastel-dark-200 dark:to-lavender-dark-300 border-pastel-200/50 dark:border-pastel-dark-300/50 shadow-mobile-lg dark:shadow-dark-900/30"
+                          : "text-gray-700 dark:text-gray-300 hover:text-pastel-600 dark:hover:text-pastel-400 hover:bg-gray-100/80 dark:hover:bg-dark-700/80 hover:border-gray-200/50 dark:hover:border-dark-600/50 active:bg-gray-50 dark:active:bg-dark-600 active:scale-95"
                       )}
                     >
                       <div className="flex items-center justify-between">
@@ -263,12 +273,12 @@ export default function Navigation() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
-                  className="pt-4 md:pt-6 border-t border-gray-100"
+                  className="pt-4 md:pt-6 border-t border-gray-200 dark:border-dark-700"
                 >
                   <Link
                     href="/contact"
                     onClick={() => handleNavClick('/contact')}
-                    className="block w-full px-4 md:px-6 py-3 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl text-center transition-all duration-300 hover:from-blue-700 hover:to-purple-700 active:scale-95 shadow-mobile-lg touch-manipulation"
+                    className="block w-full px-4 md:px-6 py-3 md:py-4 bg-gradient-to-r from-pastel-500 to-dream-end dark:from-pastel-dark-500 dark:to-lavender-dark-500 text-white font-semibold rounded-2xl text-center transition-all duration-300 hover:from-pastel-600 hover:to-dream-end/90 dark:hover:from-pastel-dark-600 dark:hover:to-lavender-dark-600 active:scale-95 shadow-mobile-lg dark:shadow-dark-900/30 touch-manipulation"
                   >
                     Get Started
                   </Link>

@@ -5,6 +5,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
       screens: {
@@ -44,6 +45,109 @@ module.exports = {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
+        },
+        // Pastel Dream - E butë dhe elegante
+        pastel: {
+          50: '#f0fdfc',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#a8edea',
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
+        },
+        // Lavender - Qetësuese dhe moderne
+        lavender: {
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a18cd1',
+          600: '#9333ea',
+          700: '#7c3aed',
+          800: '#6b21a8',
+          900: '#581c87',
+        },
+        // Sky Blue - E pastër dhe e qartë
+        sky: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#89f7fe',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+        },
+        // Gradient combinations
+        dream: {
+          start: '#a8edea',
+          end: '#fed6e3',
+        },
+        dreamLavender: {
+          start: '#a18cd1',
+          end: '#fbc2eb',
+        },
+        dreamSky: {
+          start: '#89f7fe',
+          end: '#66a6ff',
+        },
+        // Dark mode colors
+        dark: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          950: '#020617',
+        },
+        // Dark mode pastel variants
+        'pastel-dark': {
+          50: '#0f172a',
+          100: '#1e293b',
+          200: '#334155',
+          300: '#475569',
+          400: '#64748b',
+          500: '#a8edea',
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
+        },
+        'lavender-dark': {
+          50: '#0f172a',
+          100: '#1e293b',
+          200: '#334155',
+          300: '#475569',
+          400: '#64748b',
+          500: '#a18cd1',
+          600: '#9333ea',
+          700: '#7c3aed',
+          800: '#6b21a8',
+          900: '#581c87',
+        },
+        'sky-dark': {
+          50: '#0f172a',
+          100: '#1e293b',
+          200: '#334155',
+          300: '#475569',
+          400: '#64748b',
+          500: '#89f7fe',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
         },
       },
       fontFamily: {

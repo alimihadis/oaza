@@ -60,21 +60,21 @@ export default function EnhancedServiceCard({ service, index }: EnhancedServiceC
         // Laptop model
         const laptopGeometry = new THREE.BoxGeometry(1.2, 0.1, 0.8);
         const laptopMaterial = new THREE.MeshPhongMaterial({ 
-          color: 0x2563eb,
+          color: 0xa8edea,
           shininess: 100
         });
         model = new THREE.Mesh(laptopGeometry, laptopMaterial);
         
         // Add screen
         const screenGeometry = new THREE.BoxGeometry(1.1, 0.05, 0.7);
-        const screenMaterial = new THREE.MeshPhongMaterial({ color: 0x1e40af });
+        const screenMaterial = new THREE.MeshPhongMaterial({ color: 0x0d9488 });
         const screen = new THREE.Mesh(screenGeometry, screenMaterial);
         screen.position.y = 0.075;
         model.add(screen);
         
         // Add keyboard
         const keyboardGeometry = new THREE.BoxGeometry(1.1, 0.02, 0.7);
-        const keyboardMaterial = new THREE.MeshPhongMaterial({ color: 0x1e293b });
+        const keyboardMaterial = new THREE.MeshPhongMaterial({ color: 0x115e59 });
         const keyboard = new THREE.Mesh(keyboardGeometry, keyboardMaterial);
         keyboard.position.y = -0.06;
         model.add(keyboard);
@@ -84,21 +84,21 @@ export default function EnhancedServiceCard({ service, index }: EnhancedServiceC
         // Phone model
         const phoneGeometry = new THREE.BoxGeometry(0.4, 0.8, 0.05);
         const phoneMaterial = new THREE.MeshPhongMaterial({ 
-          color: 0x7c3aed,
+          color: 0xa18cd1,
           shininess: 100
         });
         model = new THREE.Mesh(phoneGeometry, phoneMaterial);
         
         // Add screen
         const phoneScreenGeometry = new THREE.BoxGeometry(0.35, 0.7, 0.02);
-        const phoneScreenMaterial = new THREE.MeshPhongMaterial({ color: 0x5b21b6 });
+        const phoneScreenMaterial = new THREE.MeshPhongMaterial({ color: 0x7c3aed });
         const phoneScreen = new THREE.Mesh(phoneScreenGeometry, phoneScreenMaterial);
         phoneScreen.position.z = 0.035;
         model.add(phoneScreen);
         
         // Add home button
         const buttonGeometry = new THREE.CircleGeometry(0.05, 16);
-        const buttonMaterial = new THREE.MeshPhongMaterial({ color: 0x1e1b4b });
+        const buttonMaterial = new THREE.MeshPhongMaterial({ color: 0x581c87 });
         const button = new THREE.Mesh(buttonGeometry, buttonMaterial);
         button.position.set(0, -0.3, 0.035);
         button.rotation.x = -Math.PI / 2;
@@ -108,14 +108,14 @@ export default function EnhancedServiceCard({ service, index }: EnhancedServiceC
       case 'chart':
         // Chart model
         const chartGeometry = new THREE.BoxGeometry(1, 0.8, 0.1);
-        const chartMaterial = new THREE.MeshPhongMaterial({ color: 0x059669 });
+        const chartMaterial = new THREE.MeshPhongMaterial({ color: 0x89f7fe });
         model = new THREE.Mesh(chartGeometry, chartMaterial);
         
         // Add bars
         for (let i = 0; i < 5; i++) {
           const barHeight = 0.1 + Math.random() * 0.6;
           const barGeometry = new THREE.BoxGeometry(0.12, barHeight, 0.08);
-          const barMaterial = new THREE.MeshPhongMaterial({ color: 0x10b981 });
+          const barMaterial = new THREE.MeshPhongMaterial({ color: 0x66a6ff });
           const bar = new THREE.Mesh(barGeometry, barMaterial);
           bar.position.set((i - 2) * 0.2, barHeight / 2, 0.09);
           model.add(bar);
@@ -199,7 +199,7 @@ export default function EnhancedServiceCard({ service, index }: EnhancedServiceC
     scene.add(directionalLight);
 
     // Add point light for glow effect
-    const pointLight = new THREE.PointLight(0x3b82f6, 1, 10);
+    const pointLight = new THREE.PointLight(0xa8edea, 1, 10);
     pointLight.position.set(0, 2, 2);
     scene.add(pointLight);
 
@@ -282,7 +282,7 @@ export default function EnhancedServiceCard({ service, index }: EnhancedServiceC
         transition={{ duration: 0.3 }}
         className="transform-gpu"
       >
-        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:from-white hover:to-primary-50 transition-all duration-500">
+        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:from-white hover:to-pastel-50 transition-all duration-500">
           {/* 3D Model Canvas */}
           {is3DVisible && (
             <div className="absolute top-4 right-4 w-50 h-50 opacity-100 transition-opacity duration-500 z-20">
@@ -294,7 +294,7 @@ export default function EnhancedServiceCard({ service, index }: EnhancedServiceC
           )}
 
           {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-pastel-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
 
           {/* Header with 3D Toggle */}
           <div className="relative p-6 pb-4">

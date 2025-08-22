@@ -22,7 +22,7 @@ export default function Card({
     outlined: 'bg-white border border-gray-200',
   };
   
-  const hoverClasses = hover ? 'hover:shadow-xl hover:-translate-y-1' : '';
+  const hoverClasses = hover ? 'hover:shadow-xl hover:-translate-y-1 hover:shadow-pastel-500/20' : '';
   
   return (
     <div className={cn(

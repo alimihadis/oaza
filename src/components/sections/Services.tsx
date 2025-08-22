@@ -112,14 +112,14 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
       case 'laptop':
         const laptopGeometry = new THREE.BoxGeometry(1, 0.1, 0.8);
         const laptopMaterial = new THREE.MeshPhongMaterial({ 
-          color: 0x2563eb,
+          color: 0xa8edea,
           shininess: 100
         });
         model = new THREE.Mesh(laptopGeometry, laptopMaterial);
         
         // Add screen
         const screenGeometry = new THREE.BoxGeometry(0.9, 0.05, 0.7);
-        const screenMaterial = new THREE.MeshPhongMaterial({ color: 0x1e40af });
+        const screenMaterial = new THREE.MeshPhongMaterial({ color: 0x0d9488 });
         const screen = new THREE.Mesh(screenGeometry, screenMaterial);
         screen.position.y = 0.075;
         model.add(screen);
@@ -128,14 +128,14 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
       case 'phone':
         const phoneGeometry = new THREE.BoxGeometry(0.3, 0.6, 0.05);
         const phoneMaterial = new THREE.MeshPhongMaterial({ 
-          color: 0x7c3aed,
+          color: 0xa18cd1,
           shininess: 100
         });
         model = new THREE.Mesh(phoneGeometry, phoneMaterial);
         
         // Add screen
         const phoneScreenGeometry = new THREE.BoxGeometry(0.25, 0.5, 0.02);
-        const phoneScreenMaterial = new THREE.MeshPhongMaterial({ color: 0x5b21b6 });
+        const phoneScreenMaterial = new THREE.MeshPhongMaterial({ color: 0x7c3aed });
         const phoneScreen = new THREE.Mesh(phoneScreenGeometry, phoneScreenMaterial);
         phoneScreen.position.z = 0.035;
         model.add(phoneScreen);
@@ -143,13 +143,13 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
         
       case 'chart':
         const chartGeometry = new THREE.BoxGeometry(0.8, 0.6, 0.1);
-        const chartMaterial = new THREE.MeshPhongMaterial({ color: 0x059669 });
+        const chartMaterial = new THREE.MeshPhongMaterial({ color: 0x89f7fe });
         model = new THREE.Mesh(chartGeometry, chartMaterial);
         
         // Add bars
         for (let i = 0; i < 4; i++) {
           const barGeometry = new THREE.BoxGeometry(0.1, 0.1 + Math.random() * 0.4, 0.05);
-          const barMaterial = new THREE.MeshPhongMaterial({ color: 0x10b981 });
+          const barMaterial = new THREE.MeshPhongMaterial({ color: 0x66a6ff });
           const bar = new THREE.Mesh(barGeometry, barMaterial);
           bar.position.set((i - 1.5) * 0.2, 0.35, 0.075);
           model.add(bar);
@@ -238,7 +238,7 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
         transition={{ duration: 0.3 }}
         className="transform-gpu"
       >
-        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:from-white hover:to-primary-50 transition-all duration-500 p-6 md:p-8">
+        <Card className="h-full relative overflow-hidden bg-gradient-to-br from-white to-gray-50 dark:from-dark-800 dark:to-dark-700 hover:from-white hover:to-pastel-50 dark:hover:from-dark-800 dark:hover:to-pastel-dark-100 transition-all duration-500 p-6 md:p-8">
           {/* 3D Model Canvas - Hidden on mobile for performance */}
           <div className="absolute top-4 right-4 w-24 h-24 md:w-30 md:h-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block">
             <canvas
@@ -249,22 +249,22 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
           </div>
 
           {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-pastel-500/5 dark:from-pastel-dark-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
 
           <div className="relative z-10">
             <motion.div 
-              className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl mb-4 md:mb-6 group-hover:from-primary-200 group-hover:to-primary-300 transition-all duration-300 mx-auto md:mx-0"
+              className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-pastel-100 to-pastel-200 dark:from-pastel-dark-200 dark:to-pastel-dark-300 rounded-xl mb-4 md:mb-6 group-hover:from-pastel-200 group-hover:to-pastel-300 dark:group-hover:from-pastel-dark-300 dark:group-hover:to-pastel-dark-400 transition-all duration-300 mx-auto md:mx-0"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
-              {IconComponent && <IconComponent size={28} className="text-primary-600 md:w-8 md:h-8" />}
+              {IconComponent && <IconComponent size={28} className="text-pastel-600 dark:text-pastel-400 md:w-8 md:h-8 transition-colors duration-300" />}
             </motion.div>
             
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors duration-300 text-center md:text-left">
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-pastel-700 dark:group-hover:text-pastel-300 transition-colors duration-300 text-center md:text-left">
               {service.title}
             </h3>
             
-            <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 flex-grow group-hover:text-gray-700 transition-colors duration-300 text-center md:text-left leading-relaxed">
+            <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 md:mb-6 flex-grow group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300 text-center md:text-left leading-relaxed">
               {service.description}
             </p>
             
@@ -272,14 +272,14 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
               {service.features.map((feature, featureIndex) => (
                 <motion.li 
                   key={featureIndex} 
-                  className="flex items-center text-xs md:text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300"
+                  className="flex items-center text-xs md:text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: featureIndex * 0.1 }}
                 >
                   <motion.div 
-                    className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary-500 rounded-full mr-2 md:mr-3 group-hover:bg-primary-600 transition-colors duration-300 flex-shrink-0"
+                    className="w-1.5 h-1.5 md:w-2 md:h-2 bg-pastel-500 dark:bg-pastel-400 rounded-full mr-2 md:mr-3 group-hover:bg-pastel-600 dark:group-hover:bg-pastel-300 transition-colors duration-300 flex-shrink-0"
                     whileHover={{ scale: 1.5 }}
                   />
                   <span className="leading-relaxed">{feature}</span>
@@ -289,7 +289,7 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
           </div>
 
           {/* Depth shadow effect */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/5 dark:from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
         </Card>
       </motion.div>
     </motion.div>
@@ -298,9 +298,9 @@ const ServiceCard = ({ service, index }: ServiceCardProps) => {
 
 export default function Services() {
   return (
-    <section className="py-section md:py-section-md lg:py-section-lg bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <section className="py-section md:py-section-md lg:py-section-lg bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden transition-colors duration-300">
       {/* Animated background waves */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30 dark:opacity-20">
         <div className="absolute top-0 left-0 w-full h-full">
           <svg className="w-full h-full" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
             <path d="M0,400 C300,300 600,500 900,400 C1050,350 1200,450 1200,400 L1200,800 L0,800 Z" fill="url(#wave1)" opacity="0.3">
@@ -308,8 +308,8 @@ export default function Services() {
             </path>
             <defs>
               <linearGradient id="wave1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: '#8b5cf6', stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: '#a8edea', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#fed6e3', stopOpacity: 1 }} />
               </linearGradient>
             </defs>
           </svg>
@@ -329,7 +329,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 break-words"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold gradient-dream mb-4 md:mb-6 break-words"
           >
             Our Services
           </motion.h2>
@@ -338,7 +338,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-3xl mx-auto px-4 md:px-0"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4 md:px-0 transition-colors duration-300"
           >
             We offer comprehensive software development and digital marketing services 
             to help your business thrive in the digital landscape.

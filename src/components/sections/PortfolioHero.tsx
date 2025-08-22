@@ -262,9 +262,9 @@ export default function PortfolioHero() {
         style={{ y, opacity, zIndex: 2 }}
         className="absolute inset-0 overflow-hidden"
       >
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-bounce-gentle" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pastel-200 dark:bg-pastel-dark-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle transition-colors duration-300"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-lavender-200 dark:bg-lavender-dark-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce-gentle transition-colors duration-300" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sky-200 dark:bg-sky-dark-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-bounce-gentle transition-colors duration-300" style={{ animationDelay: '2s' }}></div>
       </motion.div>
 
       {/* Content */}
@@ -275,20 +275,18 @@ export default function PortfolioHero() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 mb-6 break-words">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-gray-100 mb-6 break-words transition-colors duration-300">
             Our
-            <span className="block gradient-text">
+            <span className="block gradient-dream-hero">
               {typedText}
               <span className="animate-pulse">|</span>
             </span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             Discover our successful projects and see how we've helped businesses 
             transform their digital presence and achieve remarkable results.
           </p>
-
-
 
           {/* Portfolio Icons Preview */}
           <motion.div
@@ -306,10 +304,10 @@ export default function PortfolioHero() {
                 whileHover={{ scale: 1.1, y: -5 }}
                 className="flex flex-col items-center space-y-2"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-blue-100 rounded-2xl flex items-center justify-center shadow-lg">
-                  <IconComponent size={32} className="text-green-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 rounded-2xl flex items-center justify-center shadow-lg dark:shadow-dark-900/50 transition-colors duration-300">
+                  <IconComponent size={32} className="text-green-600 dark:text-green-400" />
                 </div>
-                <span className="text-sm text-gray-600 font-medium">Category {index + 1}</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300">Category {index + 1}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -324,11 +322,11 @@ export default function PortfolioHero() {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         style={{ zIndex: 3 }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-500 rounded-full flex justify-center transition-colors duration-300">
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+            className="w-1 h-3 bg-gray-400 dark:bg-gray-500 rounded-full mt-2 transition-colors duration-300"
           />
         </div>
       </motion.div>

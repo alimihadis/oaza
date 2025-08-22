@@ -82,6 +82,75 @@
     letter-spacing: 0.03em;
   }
   
+  /* Pastel Dream Gradients - E butë dhe elegante */
+  .gradient-dream {
+    @apply bg-gradient-to-r from-pastel-500 to-dream-end bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  
+  .gradient-dream-hero {
+    @apply bg-gradient-to-r from-pastel-500 via-dream-end to-lavender-500 bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 30px rgba(168, 237, 234, 0.3);
+  }
+  
+  .gradient-lavender {
+    @apply bg-gradient-to-r from-lavender-500 to-dreamLavender-end bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  
+  .gradient-sky {
+    @apply bg-gradient-to-r from-sky-500 to-dreamSky-end bg-clip-text text-transparent;
+    font-family: 'Exo 2', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  
+  /* Pastel Background Gradients */
+  .bg-dream-gradient {
+    @apply bg-gradient-to-r from-pastel-500 to-dream-end;
+  }
+  
+  .bg-lavender-gradient {
+    @apply bg-gradient-to-r from-lavender-500 to-dreamLavender-end;
+  }
+  
+  .bg-sky-gradient {
+    @apply bg-gradient-to-r from-sky-500 to-dreamSky-end;
+  }
+  
+  /* Pastel Glass Effects */
+  .glass-dream {
+    @apply bg-pastel-500/10 backdrop-blur-md border border-pastel-500/20;
+  }
+  
+  .glass-lavender {
+    @apply bg-lavender-500/10 backdrop-blur-md border border-lavender-500/20;
+  }
+  
+  .glass-sky {
+    @apply bg-sky-500/10 backdrop-blur-md border border-sky-500/20;
+  }
+  
+  /* Pastel Button Styles */
+  .btn-dream {
+    @apply bg-gradient-to-r from-pastel-500 to-dream-end hover:from-pastel-600 hover:to-dream-end/90 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .btn-lavender {
+    @apply bg-gradient-to-r from-lavender-500 to-dreamLavender-end hover:from-lavender-600 hover:to-dreamLavender-end/90 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .btn-sky {
+    @apply bg-gradient-to-r from-sky-500 to-dreamSky-end hover:from-sky-600 hover:to-dreamSky-end/90 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
   .glass-effect {
     @apply bg-white/10 backdrop-blur-md border border-white/20;
   }

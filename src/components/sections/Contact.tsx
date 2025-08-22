@@ -78,7 +78,7 @@ export default function Contact() {
         new THREE.SphereGeometry(0.2, 16, 16), // Map
       ];
 
-      const iconColors = [0x3b82f6, 0x8b5cf6, 0x10b981];
+      const iconColors = [0xa8edea, 0xa18cd1, 0x89f7fe];
       
       iconGeometries.forEach((geometry, index) => {
         const material = new THREE.MeshPhongMaterial({
@@ -112,7 +112,7 @@ export default function Contact() {
     scene.add(directionalLight);
 
     // Add point light for glow effect
-    const pointLight = new THREE.PointLight(0x3b82f6, 1, 10);
+    const pointLight = new THREE.PointLight(0xa8edea, 1, 10);
     pointLight.position.set(0, 2, 2);
     scene.add(pointLight);
 
@@ -201,32 +201,32 @@ export default function Contact() {
       icon: Mail,
       title: 'Email',
       details: ['hello@oazasoftware.com', 'support@oazasoftware.com'],
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-pastel-500 to-pastel-600 dark:from-pastel-400 dark:to-pastel-500'
     },
     {
       icon: Phone,
       title: 'Phone',
       details: ['+1 (555) 123-4567', 'Mon-Fri, 9AM-6PM EST'],
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-lavender-500 to-lavender-600 dark:from-lavender-400 dark:to-lavender-500'
     },
     {
       icon: MapPin,
       title: 'Office',
       details: ['123 Business Ave, Suite 100', 'New York, NY 10001'],
-      color: 'from-green-500 to-green-600'
+      color: 'from-sky-500 to-sky-600 dark:from-sky-400 dark:to-sky-500'
     },
     {
       icon: Clock,
       title: 'Business Hours',
       details: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 10:00 AM - 2:00 PM'],
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-dream-start to-dream-end dark:from-pastel-400 dark:to-lavender-400'
     }
   ];
 
   return (
-    <section id="contact" ref={containerRef} className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+    <section id="contact" ref={containerRef} className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden transition-colors duration-300">
       {/* 3D Background Canvas */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30 dark:opacity-20">
         <canvas
           ref={canvasRef}
           className="w-full h-full"
@@ -234,7 +234,7 @@ export default function Contact() {
       </div>
 
       {/* Animated background waves */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 dark:opacity-10">
         <div className="absolute top-0 left-0 w-full h-full">
           <svg className="w-full h-full" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
             <path d="M0,600 C300,500 600,700 900,600 C1050,550 1200,650 1200,600 L1200,800 L0,800 Z" fill="url(#wave2)" opacity="0.3">
@@ -242,8 +242,8 @@ export default function Contact() {
             </path>
             <defs>
               <linearGradient id="wave2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: '#8b5cf6', stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: '#a8edea', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#fed6e3', stopOpacity: 1 }} />
               </linearGradient>
             </defs>
           </svg>
@@ -263,7 +263,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300"
           >
             Get In Touch
           </motion.h2>
@@ -272,7 +272,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-300"
           >
             Ready to start your next project? Let's discuss how we can help 
             bring your vision to life.
@@ -287,9 +287,9 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <Card className="relative overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:from-white hover:to-primary-50 transition-all duration-500">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-white to-gray-50 dark:from-dark-800 dark:to-dark-700 hover:from-white hover:to-pastel-50 dark:hover:from-dark-800 dark:hover:to-pastel-dark-100 transition-all duration-500">
               {/* Form glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-pastel-500/5 dark:from-pastel-dark-500/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-xl" />
               
               <div className="relative z-10">
                 <motion.h3 
@@ -297,7 +297,7 @@ export default function Contact() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-2xl font-semibold text-gray-900 mb-6"
+                  className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300"
                 >
                   Send us a message
                 </motion.h3>
@@ -309,10 +309,10 @@ export default function Contact() {
                       initial={{ opacity: 0, y: -20, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                      className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center space-x-3"
+                      className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-lg flex items-center space-x-3"
                     >
-                      <CheckCircle size={20} className="text-green-600" />
-                      <span className="text-green-800">{submitMessage}</span>
+                      <CheckCircle size={20} className="text-green-600 dark:text-green-400" />
+                      <span className="text-green-800 dark:text-green-200">{submitMessage}</span>
                     </motion.div>
                   )}
                   
@@ -321,10 +321,10 @@ export default function Contact() {
                       initial={{ opacity: 0, y: -20, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                      className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-3"
+                      className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-lg flex items-center space-x-3"
                     >
-                      <AlertCircle size={20} className="text-red-600" />
-                      <span className="text-red-800">{submitMessage}</span>
+                      <AlertCircle size={20} className="text-red-600 dark:text-red-400" />
+                      <span className="text-red-800 dark:text-red-200">{submitMessage}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -401,7 +401,7 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.7 }}
                   >
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                       Service Interest
                     </label>
                     <select
@@ -409,7 +409,7 @@ export default function Contact() {
                       value={formData.service}
                       onChange={handleChange}
                       disabled={isSubmitting}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-primary-400"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-pastel-500 dark:focus:ring-pastel-400 focus:border-pastel-500 dark:focus:border-pastel-400 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:border-pastel-400 dark:hover:border-pastel-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-gray-100"
                     >
                       <option value="web-development">Web Development</option>
                       <option value="mobile-development">Mobile Development</option>
@@ -426,7 +426,7 @@ export default function Contact() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.8 }}
                   >
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
                       Message
                     </label>
                     <textarea
@@ -438,7 +438,7 @@ export default function Contact() {
                       rows={5}
                       required
                       disabled={isSubmitting}
-                      className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed hover:border-primary-400 ${
+                      className={`w-full px-4 py-3 border border-gray-300 dark:border-dark-600 rounded-lg focus:ring-2 focus:ring-pastel-500 dark:focus:ring-pastel-400 focus:border-pastel-500 dark:focus:border-pastel-400 transition-all duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed hover:border-pastel-400 dark:hover:border-pastel-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-gray-100 ${
                         focusedField === 'message' ? 'scale-105 shadow-lg' : ''
                       }`}
                       placeholder="Tell us about your project..."
@@ -490,10 +490,10 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">
                 Contact Information
               </h3>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
                 We'd love to hear from you. Reach out to us through any of these channels 
                 and we'll get back to you as soon as possible.
               </p>
@@ -518,11 +518,11 @@ export default function Contact() {
                     <info.icon size={24} className="text-white" />
                   </motion.div>
                   <div className="group-hover:translate-x-1 transition-transform duration-300">
-                    <h4 className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors duration-300">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-pastel-700 dark:group-hover:text-pastel-300 transition-colors duration-300">
                       {info.title}
                     </h4>
                     {info.details.map((detail, detailIndex) => (
-                      <p key={detailIndex} className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                      <p key={detailIndex} className="text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
                         {detail}
                       </p>
                     ))}
@@ -538,13 +538,13 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.8 }}
               whileHover={{ y: -5 }}
-              className="bg-gradient-to-br from-primary-50 to-primary-100 p-6 rounded-xl border border-primary-200"
+              className="bg-gradient-to-br from-pastel-50 to-pastel-100 dark:from-pastel-dark-200 dark:to-pastel-dark-300 p-6 rounded-xl border border-pastel-200 dark:border-pastel-dark-400 transition-colors duration-300"
             >
               <div className="flex items-center space-x-3 mb-3">
-                <Globe size={24} className="text-primary-600" />
-                <h4 className="font-semibold text-primary-800">Global Reach</h4>
+                <Globe size={24} className="text-pastel-600 dark:text-pastel-400 transition-colors duration-300" />
+                <h4 className="font-semibold text-pastel-800 dark:text-pastel-200 transition-colors duration-300">Global Reach</h4>
               </div>
-              <p className="text-primary-700 text-sm">
+              <p className="text-pastel-700 dark:text-pastel-300 text-sm transition-colors duration-300">
                 We work with clients worldwide, providing 24/7 support and flexible timezone accommodations.
               </p>
             </motion.div>
