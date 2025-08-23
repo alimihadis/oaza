@@ -2,6 +2,7 @@
   "name": "oaza-software",
   "version": "0.1.0",
   "private": true,
+  "description": "Modern web development agency website - Updated for Vercel deployment",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
